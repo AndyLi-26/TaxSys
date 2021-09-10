@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Form1
+Partial Class s
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,43 +22,40 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.save = New System.Windows.Forms.Button()
+        Me.taxcb = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.taxId = New System.Windows.Forms.TextBox()
         Me.taxNum = New System.Windows.Forms.TextBox()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.val = New System.Windows.Forms.TextBox()
+        Me.datep = New System.Windows.Forms.DateTimePicker()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
+        Me.confirm = New System.Windows.Forms.Button()
+        Me.Comment = New System.Windows.Forms.TextBox()
+        Me.Exp = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
-        'Button1
+        'save
         '
-        Me.Button1.Location = New System.Drawing.Point(573, 323)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(118, 76)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "保存"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.save.Location = New System.Drawing.Point(733, 347)
+        Me.save.Name = "save"
+        Me.save.Size = New System.Drawing.Size(118, 51)
+        Me.save.TabIndex = 0
+        Me.save.Text = "保存"
+        Me.save.UseVisualStyleBackColor = True
         '
-        'ComboBox1
+        'taxcb
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"增值税发票", "xxx发票", "xxx2发票"})
-        Me.ComboBox1.Location = New System.Drawing.Point(443, 7)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(121, 26)
-        Me.ComboBox1.TabIndex = 1
+        Me.taxcb.FormattingEnabled = True
+        Me.taxcb.Items.AddRange(New Object() {"增值税发票", "xxx发票", "xxx2发票"})
+        Me.taxcb.Location = New System.Drawing.Point(443, 7)
+        Me.taxcb.Name = "taxcb"
+        Me.taxcb.Size = New System.Drawing.Size(121, 26)
+        Me.taxcb.TabIndex = 1
         '
         'Label1
         '
@@ -87,15 +84,6 @@ Partial Class Form1
         Me.Label3.TabIndex = 4
         Me.Label3.Text = "开票日期"
         '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(34, 159)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(62, 18)
-        Me.Label4.TabIndex = 5
-        Me.Label4.Text = "校验码"
-        '
         'taxId
         '
         Me.taxId.Location = New System.Drawing.Point(133, 35)
@@ -110,40 +98,19 @@ Partial Class Form1
         Me.taxNum.Size = New System.Drawing.Size(100, 28)
         Me.taxNum.TabIndex = 7
         '
-        'TextBox3
+        'val
         '
-        Me.TextBox3.Location = New System.Drawing.Point(133, 313)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(100, 28)
-        Me.TextBox3.TabIndex = 9
+        Me.val.Location = New System.Drawing.Point(133, 157)
+        Me.val.Name = "val"
+        Me.val.Size = New System.Drawing.Size(100, 28)
+        Me.val.TabIndex = 10
         '
-        'TextBox4
+        'datep
         '
-        Me.TextBox4.Location = New System.Drawing.Point(133, 197)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(100, 28)
-        Me.TextBox4.TabIndex = 10
-        '
-        'TextBox5
-        '
-        Me.TextBox5.Location = New System.Drawing.Point(133, 156)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(100, 28)
-        Me.TextBox5.TabIndex = 11
-        '
-        'TextBox6
-        '
-        Me.TextBox6.Location = New System.Drawing.Point(330, 295)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(100, 28)
-        Me.TextBox6.TabIndex = 12
-        '
-        'DateTimePicker1
-        '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(133, 117)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(186, 28)
-        Me.DateTimePicker1.TabIndex = 13
+        Me.datep.Location = New System.Drawing.Point(133, 117)
+        Me.datep.Name = "datep"
+        Me.datep.Size = New System.Drawing.Size(186, 28)
+        Me.datep.TabIndex = 13
         '
         'Label5
         '
@@ -157,85 +124,87 @@ Partial Class Form1
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(52, 197)
+        Me.Label6.Location = New System.Drawing.Point(52, 167)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(44, 18)
         Me.Label6.TabIndex = 15
         Me.Label6.Text = "金额"
         '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(424, 221)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(62, 18)
-        Me.Label7.TabIndex = 16
-        Me.Label7.Text = "校验码"
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(432, 229)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(62, 18)
-        Me.Label8.TabIndex = 17
-        Me.Label8.Text = "校验码"
-        '
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(52, 323)
+        Me.Label9.Location = New System.Drawing.Point(52, 272)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(44, 18)
         Me.Label9.TabIndex = 18
         Me.Label9.Text = "备注"
         '
-        'Form1
+        'confirm
+        '
+        Me.confirm.Location = New System.Drawing.Point(733, 272)
+        Me.confirm.Name = "confirm"
+        Me.confirm.Size = New System.Drawing.Size(118, 57)
+        Me.confirm.TabIndex = 23
+        Me.confirm.Text = "确认"
+        Me.confirm.UseVisualStyleBackColor = True
+        '
+        'Comment
+        '
+        Me.Comment.Location = New System.Drawing.Point(120, 269)
+        Me.Comment.Multiline = True
+        Me.Comment.Name = "Comment"
+        Me.Comment.Size = New System.Drawing.Size(294, 114)
+        Me.Comment.TabIndex = 24
+        '
+        'Exp
+        '
+        Me.Exp.Location = New System.Drawing.Point(539, 340)
+        Me.Exp.Name = "Exp"
+        Me.Exp.Size = New System.Drawing.Size(141, 58)
+        Me.Exp.TabIndex = 25
+        Me.Exp.Text = "导出"
+        Me.Exp.UseVisualStyleBackColor = True
+        '
+        's
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(879, 429)
+        Me.Controls.Add(Me.Exp)
+        Me.Controls.Add(Me.Comment)
+        Me.Controls.Add(Me.confirm)
         Me.Controls.Add(Me.Label9)
-        Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.DateTimePicker1)
-        Me.Controls.Add(Me.TextBox6)
-        Me.Controls.Add(Me.TextBox5)
-        Me.Controls.Add(Me.TextBox4)
-        Me.Controls.Add(Me.TextBox3)
+        Me.Controls.Add(Me.datep)
+        Me.Controls.Add(Me.val)
         Me.Controls.Add(Me.taxNum)
         Me.Controls.Add(Me.taxId)
-        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.ComboBox1)
-        Me.Controls.Add(Me.Button1)
-        Me.Name = "Form1"
+        Me.Controls.Add(Me.taxcb)
+        Me.Controls.Add(Me.save)
+        Me.Name = "s"
         Me.Text = "Form1"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents Button1 As Button
-    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents save As Button
+    Friend WithEvents taxcb As ComboBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents Label4 As Label
     Friend WithEvents taxId As TextBox
     Friend WithEvents taxNum As TextBox
-    Friend WithEvents TextBox3 As TextBox
-    Friend WithEvents TextBox4 As TextBox
-    Friend WithEvents TextBox5 As TextBox
-    Friend WithEvents TextBox6 As TextBox
-    Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents val As TextBox
+    Friend WithEvents datep As DateTimePicker
     Friend WithEvents Label5 As Label
     Friend WithEvents Label6 As Label
-    Friend WithEvents Label7 As Label
-    Friend WithEvents Label8 As Label
     Friend WithEvents Label9 As Label
+    Friend WithEvents confirm As Button
+    Friend WithEvents Comment As TextBox
+    Friend WithEvents Exp As Button
 End Class
