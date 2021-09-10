@@ -1,0 +1,12 @@
+D:\学习\project\TaxSys\TaxSys\bin\Debug\TaxSys.exe.config
+D:\学习\project\TaxSys\TaxSys\bin\Debug\TaxSys.exe
+D:\学习\project\TaxSys\TaxSys\bin\Debug\TaxSys.pdb
+D:\学习\project\TaxSys\TaxSys\bin\Debug\TaxSys.xml
+D:\学习\project\TaxSys\TaxSys\obj\Debug\TaxSys.vbprojAssemblyReference.cache
+D:\学习\project\TaxSys\TaxSys\obj\Debug\TaxSys.Form1.resources
+D:\学习\project\TaxSys\TaxSys\obj\Debug\TaxSys.Resources.resources
+D:\学习\project\TaxSys\TaxSys\obj\Debug\TaxSys.vbproj.GenerateResource.cache
+D:\学习\project\TaxSys\TaxSys\obj\Debug\TaxSys.vbproj.CoreCompileInputs.cache
+D:\学习\project\TaxSys\TaxSys\obj\Debug\TaxSys.exe
+D:\学习\project\TaxSys\TaxSys\obj\Debug\TaxSys.xml
+D:\学习\project\TaxSys\TaxSys\obj\Debug\TaxSys.pdb
