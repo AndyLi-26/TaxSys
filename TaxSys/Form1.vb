@@ -9,7 +9,6 @@ Public Class s
         Dim fs As FileStream = File.Create(path)
         fs.Close()
         Dim objWriter As New StreamWriter(path, False)
-        'Dim temp As New StreamReader(My.Computer.FileSystem.OpenTextFileReader)
         For Each kvp As KeyValuePair(Of String, tax) In dic
             Dim v1 As String = kvp.Key
             Dim v2 As tax = kvp.Value
@@ -30,13 +29,13 @@ Public Class s
         'Dim temp As New tax()
         Dim s1, s2, s4, s5 As String
         Dim s3 As Date
-        Dim ttype As Integer
+        Dim ttype As String
         s1 = taxId.Text
         s2 = taxNum.Text
         s3 = datep.Value
         s4 = val.Text
         s5 = Comment.Text
-        ttype = taxcb.SelectedIndex
+        ttype = taxcb.SelectedItem
         If dic.ContainsKey(s1) Then
             MsgBox("重复了")
         Else
@@ -48,8 +47,8 @@ Public Class s
            .com = s5})
             MsgBox("已录入")
         End If
-        taxId.Text = ""
         taxNum.Text = ""
+        taxId.Text = ""
         datep.Value = Date.Today
         val.Text = ""
         taxcb.SelectedIndex = 0
@@ -66,12 +65,11 @@ Public Class s
                 Dim newstr As String() = Split(TextLine, ",,,,")
                 'Dim newstr As String() = TextLine.Split(New String() {",,,,"})
                 Dim s1 As String = newstr(0)
-                MsgBox(newstr(0))
                 Dim s2 As String = newstr(1)
 
                 Dim s3 As Integer = CInt(newstr(2))
                 Dim s4 As Date = Date.Parse(newstr(4))
-                Dim s5 As Integer = CInt(newstr(3))
+                Dim s5 As String = newstr(3)
                 Dim s6 As String = newstr(5)
                 dic.Add(s1, New tax() With {
            .num = s2,
@@ -87,8 +85,9 @@ Public Class s
     Private Sub Exp_Click(sender As Object, e As EventArgs) Handles Exp.Click
         Dim excel_app As New excel.Application
         excel_app.Visible = True
-        Dim workbook As excel.Workbook = excel_app.Workbooks.Open("税务发票.xlsx")
+        Dim workbook As excel.Workbook = excel_app.Workbooks.Add(1)
         Dim sheet As excel.Worksheet
+        Dim counter As Integer = 2
         sheet = workbook.Worksheets("sheet1")
         sheet.Cells(1, 1) = "发票代码"
         sheet.Cells(1, 2) = "发票号码"
@@ -98,14 +97,14 @@ Public Class s
         For Each kvp As KeyValuePair(Of String, tax) In dic
             Dim v1 As String = kvp.Key
             Dim v2 As tax = kvp.Value
-            sheet.Cells(2, 1) = v1
-            temp += v2.num + ",,,,"
-            temp += v2.value.ToString + ",,,,"
-            temp += v2.type.ToString + ",,,,"
-            temp += v2.datep.ToString("yyyy-MM-dd") + ",,,,"
-            temp += v2.com
-            objWriter.WriteLine(temp)
+            sheet.Cells(counter, 1) = v1
+            sheet.Cells(counter, 2) = v2.num
+            sheet.Cells(counter, 3) = v2.datep.ToString("yyyy-MM-dd")
+            sheet.Cells(counter, 4) = v2.type
+            sheet.Cells(counter, 5) = v2.com
+            counter += 1
         Next
+        workbook.SaveAs("税务发票.xlsx")
     End Sub
 End Class
 
@@ -114,7 +113,7 @@ Public Class tax
     Public Property num As String
     Public Property value As Integer
     Public Property datep As Date
-    Public Property type As Integer
+    Public Property type As String
     Public Property buyer_name As String
     Public Property com As String
 End Class
