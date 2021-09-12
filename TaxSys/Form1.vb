@@ -1,7 +1,7 @@
 ﻿'(add reference :microsoft excel)
 Imports System.IO
 Imports System.Text
-Imports excel = Microsoft.Office.Interop.Excel
+'Imports excel = Microsoft.Office.Interop.Excel
 Public Class s
     Private Property dic = New Dictionary(Of String, tax)
     Private Sub save_Click(sender As Object, e As EventArgs) Handles save.Click
@@ -82,30 +82,35 @@ Public Class s
         End If
     End Sub
 
-    Private Sub Exp_Click(sender As Object, e As EventArgs) Handles Exp.Click
-        Dim excel_app As New excel.Application
-        excel_app.Visible = True
-        Dim workbook As excel.Workbook = excel_app.Workbooks.Add(1)
-        Dim sheet As excel.Worksheet
-        Dim counter As Integer = 2
-        sheet = workbook.Worksheets("sheet1")
-        sheet.Cells(1, 1) = "发票代码"
-        sheet.Cells(1, 2) = "发票号码"
-        sheet.Cells(1, 3) = "开票日期"
-        sheet.Cells(1, 4) = "发票类型"
-        sheet.Cells(1, 5) = "备注"
-        For Each kvp As KeyValuePair(Of String, tax) In dic
-            Dim v1 As String = kvp.Key
-            Dim v2 As tax = kvp.Value
-            sheet.Cells(counter, 1) = v1
-            sheet.Cells(counter, 2) = v2.num
-            sheet.Cells(counter, 3) = v2.datep.ToString("yyyy-MM-dd")
-            sheet.Cells(counter, 4) = v2.type
-            sheet.Cells(counter, 5) = v2.com
-            counter += 1
-        Next
-        workbook.SaveAs("税务发票.xlsx")
-    End Sub
+
+
+
+
+
+    'Private Sub Exp_Click(sender As Object, e As EventArgs) Handles Exp.Click
+    'Dim excel_app As New excel.Application
+    '   excel_app.Visible = True
+    'Dim workbook As excel.Workbook = excel_app.Workbooks.Add(1)
+    'Dim sheet As excel.Worksheet
+    'Dim counter As Integer = 2
+    'sheet = workbook.Worksheets("sheet1")
+    '   sheet.Cells(1, 1) = "发票代码"
+    '  sheet.Cells(1, 2) = "发票号码"
+    ' sheet.Cells(1, 3) = "开票日期"
+    'sheet.Cells(1, 4) = "发票类型"
+    'sheet.Cells(1, 5) = "备注"
+    'For Each kvp As KeyValuePair(Of String, tax) In dic
+    'Dim v1 As String = kvp.Key
+    'Dim v2 As tax = kvp.Value
+    '       sheet.Cells(counter, 1) = v1
+    '      sheet.Cells(counter, 2) = v2.num
+    '     sheet.Cells(counter, 3) = v2.datep.ToString("yyyy-MM-dd")
+    '    sheet.Cells(counter, 4) = v2.type
+    '   sheet.Cells(counter, 5) = v2.com
+    '  counter += 1
+    'Next
+    '    workbook.SaveAs("税务发票.xlsx")
+    'End Sub
 End Class
 
 Public Class tax

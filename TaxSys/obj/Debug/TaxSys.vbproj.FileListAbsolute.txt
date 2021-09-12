@@ -11,3 +11,15 @@ D:\学习\project\TaxSys\TaxSys\obj\Debug\TaxSys.xml
 D:\学习\project\TaxSys\TaxSys\obj\Debug\TaxSys.pdb
 D:\学习\project\TaxSys\TaxSys\obj\Debug\TaxSys.s.resources
 D:\学习\project\TaxSys\TaxSys\obj\Debug\TaxSys.vbproj.ResolveComReference.cache
+C:\Users\TinaP\Desktop\TaxSys\TaxSys\bin\Debug\TaxSys.exe.config
+C:\Users\TinaP\Desktop\TaxSys\TaxSys\bin\Debug\TaxSys.exe
+C:\Users\TinaP\Desktop\TaxSys\TaxSys\bin\Debug\TaxSys.pdb
+C:\Users\TinaP\Desktop\TaxSys\TaxSys\bin\Debug\TaxSys.xml
+C:\Users\TinaP\Desktop\TaxSys\TaxSys\obj\Debug\TaxSys.vbproj.AssemblyReference.cache
+C:\Users\TinaP\Desktop\TaxSys\TaxSys\obj\Debug\TaxSys.s.resources
+C:\Users\TinaP\Desktop\TaxSys\TaxSys\obj\Debug\TaxSys.Resources.resources
+C:\Users\TinaP\Desktop\TaxSys\TaxSys\obj\Debug\TaxSys.vbproj.GenerateResource.cache
+C:\Users\TinaP\Desktop\TaxSys\TaxSys\obj\Debug\TaxSys.vbproj.CoreCompileInputs.cache
+C:\Users\TinaP\Desktop\TaxSys\TaxSys\obj\Debug\TaxSys.exe
+C:\Users\TinaP\Desktop\TaxSys\TaxSys\obj\Debug\TaxSys.xml
+C:\Users\TinaP\Desktop\TaxSys\TaxSys\obj\Debug\TaxSys.pdb
