@@ -113,6 +113,26 @@ Public Class s
         Next
     End Sub
 
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim path As String = "UI.txt"
+        Dim fs As FileStream = File.Create(path)
+        fs.Close()
+        Dim objWriter As New StreamWriter(path, False)
+        For Each kvp As KeyValuePair(Of String, eleInfo) In relative_s
+            Dim v1 As String = kvp.Key
+            Dim v2 As eleInfo = kvp.Value
+            Dim temp As String = ""
+            temp += v1 + ","
+            temp += v2.x.ToString + ","
+            temp += v2.y.ToString + ","
+            temp += v2.w.ToString + ","
+            temp += v2.h.ToString + ","
+            objWriter.WriteLine(temp)
+        Next
+        objWriter.Close()
+        MsgBox("保存完成")
+    End Sub
+
     'Private Sub Exp_Click(sender As Object, e As EventArgs) Handles Exp.Click
     'Dim excel_app As New excel.Application
     '   excel_app.Visible = True

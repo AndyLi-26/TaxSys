@@ -79,6 +79,7 @@ Partial Class s
         Me.TextBox10 = New System.Windows.Forms.TextBox()
         Me.TextBox11 = New System.Windows.Forms.TextBox()
         Me.Label30 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'save
@@ -759,12 +760,22 @@ Partial Class s
         Me.Label30.Size = New System.Drawing.Size(1044, 181)
         Me.Label30.TabIndex = 56
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(81, 111)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(134, 62)
+        Me.Button1.TabIndex = 76
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         's
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.ClientSize = New System.Drawing.Size(1924, 926)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TextBox11)
         Me.Controls.Add(Me.TextBox10)
         Me.Controls.Add(Me.TextBox9)
@@ -888,4 +899,5 @@ Partial Class s
     Friend WithEvents TextBox10 As TextBox
     Friend WithEvents TextBox11 As TextBox
     Friend WithEvents Label30 As Label
+    Friend WithEvents Button1 As Button
 End Class
