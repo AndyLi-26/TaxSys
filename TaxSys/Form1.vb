@@ -4,6 +4,7 @@ Imports System.Text
 'Imports excel = Microsoft.Office.Interop.Excel
 Public Class s
     Private Property dic = New Dictionary(Of String, tax)
+    Private Property relative_s As New Dictionary(Of String, eleInfo)
     Private Sub save_Click(sender As Object, e As EventArgs) Handles save.Click
         Dim path As String = "temp"
         Dim fs As FileStream = File.Create(path)
@@ -55,7 +56,7 @@ Public Class s
         Comment.Text = ""
     End Sub
 
-    Private Sub s_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub s_Load(sender As Object, e As EventArgs) Handles MyBase.HandleCreated
         Dim temp As String = "temp"
         Dim TextLine As String
         If File.Exists(temp) = True Then
@@ -79,13 +80,38 @@ Public Class s
            .com = s6})
             Loop
             objReader.Close()
+        Else
+            Dim x, y As Integer
+            x = Me.Width
+            y = Me.Height
+            For Each item In Me.Controls
+                If item.Name = "TextBox8" Then
+                    MsgBox(item.Location.X)
+                    MsgBox(item.Location.Y)
+                    MsgBox("1514, 483")
+                End If
+                relative_s.Add(item.Name, New eleInfo With {
+                .x = item.Location.X / x,
+                .y = item.Location.Y / y,
+                .w = item.Size.Width / x,
+                .h = item.Size.Height / y
+                })
+            Next
+            MsgBox(x)
+            MsgBox(y)
         End If
     End Sub
-
-
-
-
-
+    Private Sub s_resize(sender As Object, e As EventArgs) Handles MyBase.ResizeEnd
+        Dim x, y As Integer
+        x = Me.Width
+        y = Me.Height
+        For Each item In Me.Controls
+            item.Location = New Point(Int(relative_s(item.Name).x * x), Int(relative_s(item.Name).y * y))
+            'item.Size = New()
+            item.Height = Int(relative_s(item.Name).h * y)
+            item.Width = Int(relative_s(item.Name).w * x)
+        Next
+    End Sub
 
     'Private Sub Exp_Click(sender As Object, e As EventArgs) Handles Exp.Click
     'Dim excel_app As New excel.Application
@@ -121,4 +147,12 @@ Public Class tax
     Public Property type As String
     Public Property buyer_name As String
     Public Property com As String
+End Class
+
+Public Class eleInfo
+    Public Property x As Single
+    Public Property y As Single
+    Public Property w As Single
+    Public Property h As Single
+
 End Class
