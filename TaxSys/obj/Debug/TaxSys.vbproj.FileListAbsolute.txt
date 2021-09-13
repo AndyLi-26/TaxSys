@@ -22,3 +22,4 @@ C:\Users\TinaP\Desktop\TaxSys\TaxSys\obj\Debug\TaxSys.vbproj.CoreCompileInputs.c
 C:\Users\TinaP\Desktop\TaxSys\TaxSys\obj\Debug\TaxSys.exe
 C:\Users\TinaP\Desktop\TaxSys\TaxSys\obj\Debug\TaxSys.xml
 C:\Users\TinaP\Desktop\TaxSys\TaxSys\obj\Debug\TaxSys.pdb
+D:\学习\project\TaxSys\TaxSys\obj\Debug\TaxSys.vbproj.ResolveComReference.cache

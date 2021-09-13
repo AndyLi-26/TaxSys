@@ -1,13 +1,14 @@
 ﻿'(add reference :microsoft excel)
 Imports System.IO
 Imports System.Text
-'Imports excel = Microsoft.Office.Interop.Excel
+Imports excel = Microsoft.Office.Interop.Excel
 Public Class s
     Private Property dic = New Dictionary(Of String, tax)
     Private Property relative_s As New Dictionary(Of String, eleInfo)
     Private Sub Funcsave()
         Dim path As String = "temp"
         Dim objWriter As New StreamWriter(path, False)
+        objWriter.WriteLine(ComboBox1.SelectedItem)
         For Each kvp As KeyValuePair(Of String, tax) In dic
             Dim v1 As String = kvp.Key
             Dim v2 As tax = kvp.Value
@@ -32,7 +33,6 @@ Public Class s
             objWriter.WriteLine(temp)
         Next
         objWriter.Close()
-        MsgBox("保存完成")
     End Sub
 
     Private Sub confirm_Click(sender As Object, e As EventArgs) Handles confirm.Click
@@ -178,14 +178,18 @@ Public Class s
                 TextBox9.Text = ""
                 TextBox11.Text = ""
                 Funcsave()
+                MsgBox("保存完成")
             End If
         End If
 
     End Sub
 
     Private Sub s_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        TextBox10.AutoCompleteCustomSource.Add(10)
+        TextBox10.AutoCompleteCustomSource.Add("010")
+        TextBox10.AutoCompleteCustomSource.Add("010")
         taxcb.SelectedIndex = 0
-        Dim temp As String = "UI.txt"
+        Dim temp As String = "UI"
         Dim TextLine As String
         If File.Exists(temp) = True Then
             Dim objReader As New StreamReader(temp)
@@ -221,8 +225,14 @@ Public Class s
         temp = "temp"
         If File.Exists(temp) = True Then
             Dim objReader As New StreamReader(temp)
+            Dim counter As Integer = 0
             Do While objReader.Peek() <> -1
                 TextLine = objReader.ReadLine()
+                If counter = 0 Then
+                    ComboBox1.SelectedItem = TextLine
+                    counter = 1
+                    Continue Do
+                End If
                 Dim newstr As String() = Split(TextLine, ",,,,")
                 dic.Add(newstr(0), New tax() With {
            .num = newstr(1),
@@ -244,6 +254,7 @@ Public Class s
             Loop
             objReader.Close()
         Else
+            ComboBox1.SelectedItem = "9"
             Dim fs As FileStream = File.Create(temp)
             fs.Close()
         End If
@@ -266,7 +277,7 @@ Public Class s
         Next
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim path As String = "UI.txt"
+        Dim path As String = "UI"
         Dim fs As FileStream = File.Create(path)
         fs.Close()
         Dim objWriter As New StreamWriter(path, False)
@@ -291,39 +302,65 @@ Public Class s
         For Each item In Me.Controls
             If {"Label5", "Label7", "taxcb"}.Contains(item.Name) Then
                 item.Font = New Font("SimSun", f1 * 2, FontStyle.Bold)
-            ElseIf {"taxNum", "taxId", "datep", "Label1", "Label2", "Label3", "Checker", "Label9"}.Contains(item.Name) Then
+            ElseIf {"taxNum", "taxId", "datep", "Label1", "Label2", "Label3", "Checker", "Label9", "Label16", "ComboBox11"}.Contains(item.Name) Then
                 item.Font = New Font("SimSun", Convert.ToSingle(f1 * 1.5), FontStyle.Regular)
             Else
                 item.Font = New Font("SimSun", f1, FontStyle.Regular)
             End If
         Next
+        Funcsave()
     End Sub
 
 
-    'Private Sub Exp_Click(sender As Object, e As EventArgs) Handles Exp.Click
-    'Dim excel_app As New excel.Application
-    '   excel_app.Visible = True
-    'Dim workbook As excel.Workbook = excel_app.Workbooks.Add(1)
-    'Dim sheet As excel.Worksheet
-    'Dim counter As Integer = 2
-    'sheet = workbook.Worksheets("sheet1")
-    '   sheet.Cells(1, 1) = "发票代码"
-    '  sheet.Cells(1, 2) = "发票号码"
-    ' sheet.Cells(1, 3) = "开票日期"
-    'sheet.Cells(1, 4) = "发票类型"
-    'sheet.Cells(1, 5) = "备注"
-    'For Each kvp As KeyValuePair(Of String, tax) In dic
-    'Dim v1 As String = kvp.Key
-    'Dim v2 As tax = kvp.Value
-    '       sheet.Cells(counter, 1) = v1
-    '      sheet.Cells(counter, 2) = v2.num
-    '     sheet.Cells(counter, 3) = v2.datep.ToString("yyyy-MM-dd")
-    '    sheet.Cells(counter, 4) = v2.type
-    '   sheet.Cells(counter, 5) = v2.com
-    '  counter += 1
-    'Next
-    '    workbook.SaveAs("税务发票.xlsx")
-    'End Sub
+    Private Sub Exp_Click(sender As Object, e As EventArgs) Handles Exp.Click
+        Dim excel_app As New excel.Application
+        excel_app.Visible = True
+        Dim workbook As excel.Workbook = excel_app.Workbooks.Add(1)
+        Dim sheet As excel.Worksheet
+        Dim counter As Integer = 2
+        sheet = workbook.Worksheets("sheet1")
+        sheet.Cells(1, 1) = "发票号码"
+        sheet.Cells(1, 2) = "发票类型"
+        sheet.Cells(1, 3) = "发票代码"
+        sheet.Cells(1, 4) = "开票日期"
+        sheet.Cells(1, 5) = "校验码"
+        sheet.Cells(1, 6) = "购买方"
+        sheet.Cells(1, 7) = "货物或应税劳务、服务名称"
+        sheet.Cells(1, 8) = "规格型号"
+        sheet.Cells(1, 9) = "单位"
+        sheet.Cells(1, 10) = "数量"
+        sheet.Cells(1, 11) = "单价"
+        sheet.Cells(1, 12) = "金额"
+        sheet.Cells(1, 13) = "税率"
+        sheet.Cells(1, 14) = "税额"
+        sheet.Cells(1, 15) = "加税合计"
+        sheet.Cells(1, 16) = "销售方"
+        sheet.Cells(1, 17) = "备注"
+
+        For Each kvp As KeyValuePair(Of String, tax) In dic
+            Dim v1 As String = kvp.Key
+            Dim v2 As tax = kvp.Value
+            sheet.Cells(counter, 1) = v1
+            sheet.Cells(counter, 3) = If(v2.num.ToString() = "-1", "", v2.num.ToString())
+            sheet.Cells(counter, 2) = If(v2.type.ToString() = "-1", "", v2.type.ToString())
+            sheet.Cells(counter, 4) = v2.datep.ToString("yyyy-MM-dd")
+            sheet.Cells(counter, 5) = If(v2.checker = "-1", "", v2.checker)
+            sheet.Cells(counter, 6) = If(v2.buyer = "-1", "", v2.buyer)
+            sheet.Cells(counter, 7) = If(v2.prod = "-1", "", v2.prod)
+            sheet.Cells(counter, 8) = If(v2.model = "-1", "", v2.model)
+            sheet.Cells(counter, 9) = If(v2.unit = "-1", "", v2.unit)
+            sheet.Cells(counter, 10) = If(v2.amount.ToString() = "-1", "", v2.amount.ToString())
+            sheet.Cells(counter, 11) = If(v2.price.ToString() = "-1", "", v2.price.ToString())
+            sheet.Cells(counter, 12) = If(v2.value.ToString() = "-1", "", v2.value.ToString())
+            sheet.Cells(counter, 13) = If(v2.taxper.ToString() = "-1", "", v2.taxper.ToString())
+            sheet.Cells(counter, 14) = If(v2.taxamount.ToString() = "-1", "", v2.taxamount.ToString())
+            sheet.Cells(counter, 15) = If(v2.total.ToString() = "-1", "", v2.total.ToString())
+            sheet.Cells(counter, 16) = If(v2.seller = "-1", "", v2.seller)
+            sheet.Cells(counter, 17) = If(v2.com = "-1", "", v2.com)
+
+            counter += 1
+        Next
+    End Sub
 End Class
 
 Public Class tax

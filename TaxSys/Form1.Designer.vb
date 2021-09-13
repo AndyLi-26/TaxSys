@@ -718,7 +718,11 @@ Partial Class s
         '
         'TextBox10
         '
+        Me.TextBox10.AllowDrop = True
         Me.TextBox10.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.TextBox10.AutoCompleteCustomSource.AddRange(New String() {"010", "010", "010"})
+        Me.TextBox10.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.TextBox10.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
         Me.TextBox10.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.TextBox10.Font = New System.Drawing.Font("SimSun", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.TextBox10.Location = New System.Drawing.Point(262, 270)
@@ -758,11 +762,12 @@ Partial Class s
         Me.Button1.TabIndex = 76
         Me.Button1.Text = "Button1"
         Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.Visible = False
         '
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(38, 9)
+        Me.Label16.Location = New System.Drawing.Point(45, 14)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(80, 18)
         Me.Label16.TabIndex = 78
@@ -772,7 +777,7 @@ Partial Class s
         '
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Items.AddRange(New Object() {"4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"})
-        Me.ComboBox1.Location = New System.Drawing.Point(15, 31)
+        Me.ComboBox1.Location = New System.Drawing.Point(26, 47)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(121, 26)
         Me.ComboBox1.TabIndex = 79
@@ -783,19 +788,19 @@ Partial Class s
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.ClientSize = New System.Drawing.Size(1924, 926)
-        Me.Controls.Add(Me.ComboBox1)
-        Me.Controls.Add(Me.Label16)
-        Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.TextBox11)
-        Me.Controls.Add(Me.TextBox10)
-        Me.Controls.Add(Me.TextBox9)
-        Me.Controls.Add(Me.TextBox8)
         Me.Controls.Add(Me.TextBox6)
-        Me.Controls.Add(Me.TextBox5)
-        Me.Controls.Add(Me.TextBox4)
+        Me.Controls.Add(Me.TextBox10)
+        Me.Controls.Add(Me.TextBox11)
         Me.Controls.Add(Me.TextBox3)
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.ComboBox1)
+        Me.Controls.Add(Me.Label16)
+        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.TextBox9)
+        Me.Controls.Add(Me.TextBox8)
+        Me.Controls.Add(Me.TextBox5)
+        Me.Controls.Add(Me.TextBox4)
         Me.Controls.Add(Me.Label36)
         Me.Controls.Add(Me.Label37)
         Me.Controls.Add(Me.Label38)
