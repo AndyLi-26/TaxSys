@@ -205,6 +205,17 @@ Public Class s
             Loop
             Funcresize()
         Else
+            Dim x, y As Integer
+            x = Me.Width
+            y = Me.Height
+            For Each item In Me.Controls
+                relative_s.Add(item.Name, New eleInfo With {
+                .x = item.Location.X / x,
+                .y = item.Location.Y / y,
+                .w = item.Size.Width / x,
+                .h = item.Size.Height / y
+                })
+            Next
             MsgBox("UI文件丢失，界面可能出错")
         End If
         temp = "temp"
