@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class s
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class s
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.save = New System.Windows.Forms.Button()
         Me.taxcb = New System.Windows.Forms.ComboBox()
@@ -80,6 +80,9 @@ Partial Class s
         Me.TextBox11 = New System.Windows.Forms.TextBox()
         Me.Label30 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.FontDialog1 = New System.Windows.Forms.FontDialog()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.SuspendLayout()
         '
         'save
@@ -762,12 +765,30 @@ Partial Class s
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(81, 111)
+        Me.Button1.Location = New System.Drawing.Point(231, 112)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(134, 62)
         Me.Button1.TabIndex = 76
         Me.Button1.Text = "Button1"
         Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Location = New System.Drawing.Point(38, 9)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(80, 18)
+        Me.Label16.TabIndex = 78
+        Me.Label16.Text = "字体大小"
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Items.AddRange(New Object() {"4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"})
+        Me.ComboBox1.Location = New System.Drawing.Point(15, 31)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(121, 26)
+        Me.ComboBox1.TabIndex = 79
         '
         's
         '
@@ -775,6 +796,8 @@ Partial Class s
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.ClientSize = New System.Drawing.Size(1924, 926)
+        Me.Controls.Add(Me.ComboBox1)
+        Me.Controls.Add(Me.Label16)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TextBox11)
         Me.Controls.Add(Me.TextBox10)
@@ -900,4 +923,7 @@ Partial Class s
     Friend WithEvents TextBox11 As TextBox
     Friend WithEvents Label30 As Label
     Friend WithEvents Button1 As Button
+    Friend WithEvents Label16 As Label
+    Friend WithEvents FontDialog1 As FontDialog
+    Friend WithEvents ComboBox1 As ComboBox
 End Class

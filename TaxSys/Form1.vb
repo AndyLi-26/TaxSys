@@ -56,9 +56,30 @@ Public Class s
         Comment.Text = ""
     End Sub
 
-    Private Sub s_Load(sender As Object, e As EventArgs) Handles MyBase.HandleCreated
-        Dim temp As String = "temp"
+    Private Sub s_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim temp As String = "UI.txt"
         Dim TextLine As String
+        If File.Exists(temp) = True Then
+            Dim objReader As New StreamReader(temp)
+            Dim x, y As Integer
+            x = Me.Width
+            y = Me.Height
+            Do While objReader.Peek() <> -1
+                TextLine = objReader.ReadLine()
+                Dim newstr As String() = Split(TextLine, ",")
+                Dim name As String = newstr(0)
+                relative_s.Add(name, New eleInfo With {
+                .x = Convert.ToSingle(newstr(1)),
+                .y = Convert.ToSingle(newstr(2)),
+                .w = Convert.ToSingle(newstr(3)),
+                .h = Convert.ToSingle(newstr(4))
+                })
+            Loop
+            Funcresize()
+        Else
+            MsgBox("UI文件丢失，界面可能出错")
+        End If
+        temp = "temp"
         If File.Exists(temp) = True Then
             Dim objReader As New StreamReader(temp)
             Do While objReader.Peek() <> -1
@@ -80,39 +101,25 @@ Public Class s
            .com = s6})
             Loop
             objReader.Close()
-        Else
-            Dim x, y As Integer
-            x = Me.Width
-            y = Me.Height
-            For Each item In Me.Controls
-                If item.Name = "TextBox8" Then
-                    MsgBox(item.Location.X)
-                    MsgBox(item.Location.Y)
-                    MsgBox("1514, 483")
-                End If
-                relative_s.Add(item.Name, New eleInfo With {
-                .x = item.Location.X / x,
-                .y = item.Location.Y / y,
-                .w = item.Size.Width / x,
-                .h = item.Size.Height / y
-                })
-            Next
-            MsgBox(x)
-            MsgBox(y)
         End If
     End Sub
     Private Sub s_resize(sender As Object, e As EventArgs) Handles MyBase.ResizeEnd
+        Funcresize()
+    End Sub
+    Private Sub Funcresize()
         Dim x, y As Integer
         x = Me.Width
         y = Me.Height
         For Each item In Me.Controls
+            If relative_s.ContainsKey(item.Name) = False Then
+                Continue For
+            End If
             item.Location = New Point(Int(relative_s(item.Name).x * x), Int(relative_s(item.Name).y * y))
             'item.Size = New()
             item.Height = Int(relative_s(item.Name).h * y)
             item.Width = Int(relative_s(item.Name).w * x)
         Next
     End Sub
-
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim path As String = "UI.txt"
         Dim fs As FileStream = File.Create(path)
@@ -132,6 +139,21 @@ Public Class s
         objWriter.Close()
         MsgBox("保存完成")
     End Sub
+
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
+        Dim f As String = (ComboBox1.SelectedItem)
+        Dim f1 As Single = Convert.ToSingle(f)
+        For Each item In Me.Controls
+            If {"Label5", "Label7", "taxcb"}.Contains(item.Name) Then
+                item.Font = New Font("SimSun", f1 * 2, FontStyle.Bold)
+            ElseIf {}.Contains(item.Name) Then
+                item.Font = New Font("SimSun", Convert.ToSingle(f1 * 1.5), FontStyle.Regular)
+            Else
+                item.Font = New Font("SimSun", f1, FontStyle.Regular)
+            End If
+        Next
+    End Sub
+
 
     'Private Sub Exp_Click(sender As Object, e As EventArgs) Handles Exp.Click
     'Dim excel_app As New excel.Application
