@@ -22,7 +22,6 @@ Partial Class s
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.save = New System.Windows.Forms.Button()
         Me.taxcb = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -36,7 +35,7 @@ Partial Class s
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.TextBox7 = New System.Windows.Forms.TextBox()
+        Me.Checker = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
@@ -84,18 +83,6 @@ Partial Class s
         Me.FontDialog1 = New System.Windows.Forms.FontDialog()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.SuspendLayout()
-        '
-        'save
-        '
-        Me.save.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.save.Font = New System.Drawing.Font("SimSun", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.save.Location = New System.Drawing.Point(1230, 857)
-        Me.save.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.save.Name = "save"
-        Me.save.Size = New System.Drawing.Size(118, 50)
-        Me.save.TabIndex = 0
-        Me.save.Text = "保存"
-        Me.save.UseVisualStyleBackColor = True
         '
         'taxcb
         '
@@ -195,7 +182,7 @@ Partial Class s
         '
         Me.confirm.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.confirm.Font = New System.Drawing.Font("SimSun", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.confirm.Location = New System.Drawing.Point(1441, 857)
+        Me.confirm.Location = New System.Drawing.Point(1451, 857)
         Me.confirm.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.confirm.Name = "confirm"
         Me.confirm.Size = New System.Drawing.Size(118, 56)
@@ -207,10 +194,10 @@ Partial Class s
         '
         Me.Exp.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Exp.Font = New System.Drawing.Font("SimSun", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Exp.Location = New System.Drawing.Point(1640, 857)
+        Me.Exp.Location = New System.Drawing.Point(1631, 857)
         Me.Exp.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Exp.Name = "Exp"
-        Me.Exp.Size = New System.Drawing.Size(118, 50)
+        Me.Exp.Size = New System.Drawing.Size(118, 58)
         Me.Exp.TabIndex = 25
         Me.Exp.Text = "导出"
         Me.Exp.UseVisualStyleBackColor = True
@@ -252,16 +239,16 @@ Partial Class s
         Me.Label9.TabIndex = 34
         Me.Label9.Text = "校验码:"
         '
-        'TextBox7
+        'Checker
         '
-        Me.TextBox7.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.TextBox7.BackColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.TextBox7.Font = New System.Drawing.Font("SimSun", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.TextBox7.Location = New System.Drawing.Point(1507, 180)
-        Me.TextBox7.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(229, 35)
-        Me.TextBox7.TabIndex = 35
+        Me.Checker.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.Checker.BackColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Checker.Font = New System.Drawing.Font("SimSun", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Checker.Location = New System.Drawing.Point(1507, 180)
+        Me.Checker.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Checker.Name = "Checker"
+        Me.Checker.Size = New System.Drawing.Size(229, 35)
+        Me.Checker.TabIndex = 35
         '
         'Label4
         '
@@ -514,7 +501,7 @@ Partial Class s
         Me.Label29.Name = "Label29"
         Me.Label29.Size = New System.Drawing.Size(26, 90)
         Me.Label29.TabIndex = 55
-        Me.Label29.Text = "购" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "买" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "方"
+        Me.Label29.Text = "销" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "售" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "方"
         '
         'Label31
         '
@@ -835,7 +822,7 @@ Partial Class s
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.Label17)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.TextBox7)
+        Me.Controls.Add(Me.Checker)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Exp)
@@ -848,7 +835,6 @@ Partial Class s
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.taxcb)
-        Me.Controls.Add(Me.save)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label20)
         Me.Controls.Add(Me.Label25)
@@ -864,8 +850,6 @@ Partial Class s
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents save As Button
     Friend WithEvents taxcb As ComboBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
@@ -879,7 +863,7 @@ Partial Class s
     Friend WithEvents Label7 As Label
     Friend WithEvents Label14 As Label
     Friend WithEvents Label9 As Label
-    Friend WithEvents TextBox7 As TextBox
+    Friend WithEvents Checker As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents Label12 As Label
     Friend WithEvents Label11 As Label
