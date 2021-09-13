@@ -5,42 +5,13 @@ Imports excel = Microsoft.Office.Interop.Excel
 Public Class s
     Private Property dic = New Dictionary(Of String, tax)
     Private Property relative_s As New Dictionary(Of String, eleInfo)
-    Private Sub Funcsave()
-        Dim path As String = "temp"
-        Dim objWriter As New StreamWriter(path, False)
-        objWriter.WriteLine(ComboBox1.SelectedItem)
-        For Each kvp As KeyValuePair(Of String, tax) In dic
-            Dim v1 As String = kvp.Key
-            Dim v2 As tax = kvp.Value
-            Dim temp As String = ""
-            temp += v1 + ",,,,"
-            temp += v2.num + ",,,,"
-            temp += v2.value.ToString + ",,,,"
-            temp += v2.datep.ToString("yyyy-MM-dd") + ",,,,"
-            temp += v2.type + ",,,,"
-            temp += v2.com + ",,,,"
-            temp += v2.checker + ",,,,"
-            temp += v2.buyer + ",,,,"
-            temp += v2.prod + ",,,,"
-            temp += v2.model + ",,,,"
-            temp += v2.unit + ",,,,"
-            temp += v2.amount.ToString + ",,,,"
-            temp += v2.price.ToString + ",,,,"
-            temp += v2.taxper.ToString + ",,,,"
-            temp += v2.taxamount.ToString + ",,,,"
-            temp += v2.total.ToString + ",,,,"
-            temp += v2.seller + ",,,,"
-            objWriter.WriteLine(temp)
-        Next
-        objWriter.Close()
-    End Sub
+    Private Property trig As Boolean
 
     Private Sub confirm_Click(sender As Object, e As EventArgs) Handles confirm.Click
-        'Dim temp As New tax()
-        Dim temp As String = taxId.Text
-        If temp = "" Then
+        Dim id As String = taxId.Text
+        If id = "" Then
             MsgBox("发票号码为空白")
-        ElseIf IsNumeric(temp) = False Then
+        ElseIf IsNumeric(id) = False Then
             MsgBox("发票号码只能含有数字")
         Else
             Dim temptaxNum As String = taxNum.Text
@@ -177,21 +148,45 @@ Public Class s
                 TextBox8.Text = ""
                 TextBox9.Text = ""
                 TextBox11.Text = ""
-                Funcsave()
+                'Dim objWriter As New StreamWriter("temp", True)
+                Dim v1 As String = id
+                Dim v2 As tax = dic(id)
+                Dim temp As String = ""
+                temp += v1 + ",,,,"
+                temp += v2.num + ",,,,"
+                temp += v2.value.ToString + ",,,,"
+                temp += v2.datep.ToString("yyyy-MM-dd") + ",,,,"
+                temp += v2.type + ",,,,"
+                temp += v2.com + ",,,,"
+                temp += v2.checker + ",,,,"
+                temp += v2.buyer + ",,,,"
+                temp += v2.prod + ",,,,"
+                temp += v2.model + ",,,,"
+                temp += v2.unit + ",,,,"
+                temp += v2.amount.ToString + ",,,,"
+                temp += v2.price.ToString + ",,,,"
+                temp += v2.taxper.ToString + ",,,,"
+                temp += v2.taxamount.ToString + ",,,,"
+                temp += v2.total.ToString + ",,,,"
+                temp += v2.seller + vbNewLine
+                'objWriter.WriteLine(temp)
+                'objWriter.Close()
+                File.AppendAllText("temp", temp)
                 MsgBox("保存完成")
             End If
         End If
 
     End Sub
+    Private Sub s_close(sender As Object, e As EventArgs) Handles MyBase.Closed
+        Application.Exit()
+    End Sub
 
     Private Sub s_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        TextBox10.AutoCompleteCustomSource.Add(10)
-        TextBox10.AutoCompleteCustomSource.Add("010")
-        TextBox10.AutoCompleteCustomSource.Add("010")
         taxcb.SelectedIndex = 0
         Dim temp As String = "UI"
         Dim TextLine As String
         If File.Exists(temp) = True Then
+            'FileOpen(1, "UI",OpenMode.)
             Dim objReader As New StreamReader(temp)
             Dim x, y As Integer
             x = Me.Width
@@ -207,6 +202,7 @@ Public Class s
                 .h = Convert.ToSingle(newstr(4))
                 })
             Loop
+            objReader.Close()
             Funcresize()
         Else
             Dim x, y As Integer
@@ -229,7 +225,9 @@ Public Class s
             Do While objReader.Peek() <> -1
                 TextLine = objReader.ReadLine()
                 If counter = 0 Then
+                    trig = False
                     ComboBox1.SelectedItem = TextLine
+                    trig = True
                     counter = 1
                     Continue Do
                 End If
@@ -254,9 +252,11 @@ Public Class s
             Loop
             objReader.Close()
         Else
-            ComboBox1.SelectedItem = "9"
-            Dim fs As FileStream = File.Create(temp)
+            trig = True
+            Dim fs As FileStream = File.Create("temp")
             fs.Close()
+            File.WriteAllLines("temp", {"9"})
+            ComboBox1.SelectedItem = "9"
         End If
     End Sub
     Private Sub s_resize(sender As Object, e As EventArgs) Handles MyBase.ResizeEnd
@@ -308,7 +308,11 @@ Public Class s
                 item.Font = New Font("SimSun", f1, FontStyle.Regular)
             End If
         Next
-        Funcsave()
+        If trig Then
+            Dim lines() As String = File.ReadAllLines("temp")
+            lines(0) = f
+            File.WriteAllLines("temp", lines)
+        End If
     End Sub
 
 
@@ -342,7 +346,7 @@ Public Class s
             Dim v2 As tax = kvp.Value
             sheet.Cells(counter, 1) = v1
             sheet.Cells(counter, 3) = If(v2.num.ToString() = "-1", "", v2.num.ToString())
-            sheet.Cells(counter, 2) = If(v2.type.ToString() = "-1", "", v2.type.ToString())
+            sheet.Cells(counter, 2) = If(v2.type = "-1", "", v2.type)
             sheet.Cells(counter, 4) = v2.datep.ToString("yyyy-MM-dd")
             sheet.Cells(counter, 5) = If(v2.checker = "-1", "", v2.checker)
             sheet.Cells(counter, 6) = If(v2.buyer = "-1", "", v2.buyer)
