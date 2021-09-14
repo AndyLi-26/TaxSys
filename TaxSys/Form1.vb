@@ -113,6 +113,7 @@ Public Class s
             If dic.ContainsKey(taxId.Text) Then
                 MsgBox("重复了")
             Else
+                MsgBox(tempcom.Contains(vbNewLine))
                 dic.Add(taxId.Text, New tax() With {
                .num = temptaxNum,
                .value = Convert.ToSingle(tempval),

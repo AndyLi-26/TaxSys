@@ -762,6 +762,7 @@ Partial Class s
         Me.Button1.TabIndex = 76
         Me.Button1.Text = "Button1"
         Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.Visible = False
         '
         'Label16
         '
