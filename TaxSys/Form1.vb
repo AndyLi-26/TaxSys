@@ -2,29 +2,174 @@
 Imports System.IO
 Imports System.Text
 Imports excel = Microsoft.Office.Interop.Excel
+Imports System.EventArgs
 Public Class s
     Private Property dic = New Dictionary(Of String, tax)
     Private Property relative_s As New Dictionary(Of String, eleInfo)
+    Private Property sellerAuto As New AutoCompleteStringCollection
+    Private Property buyerAuto As New AutoCompleteStringCollection
+    Private Property ctAuto As New AutoCompleteStringCollection
+    Private Property def As String = "上海"
     Private Property trig As Boolean
-
+    Private Sub change_F1(sender As Object, e As KeyEventArgs) Handles taxNum.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.Handled = True
+            e.SuppressKeyPress = True
+            'MsgBox("a")
+            taxId.Focus()
+        End If
+    End Sub
+    Private Sub change_F2(sender As Object, e As KeyEventArgs) Handles taxId.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.Handled = True
+            e.SuppressKeyPress = True
+            'MsgBox("a")
+            datep.Focus()
+        End If
+    End Sub
+    Private Sub change_F3(sender As Object, e As KeyEventArgs) Handles datep.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.Handled = True
+            e.SuppressKeyPress = True
+            'MsgBox("a")
+            Checker.Focus()
+        End If
+    End Sub
+    Private Sub change_F4(sender As Object, e As KeyEventArgs) Handles Checker.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.Handled = True
+            e.SuppressKeyPress = True
+            'MsgBox("a")
+            TextBox10.Focus()
+        End If
+    End Sub
+    Private Sub change_F5(sender As Object, e As KeyEventArgs) Handles TextBox10.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.Handled = True
+            e.SuppressKeyPress = True
+            'MsgBox("a")
+            TextBox1.Focus()
+        End If
+    End Sub
+    Private Sub change_F6(sender As Object, e As KeyEventArgs) Handles TextBox1.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.Handled = True
+            e.SuppressKeyPress = True
+            'MsgBox("a")
+            TextBox2.Focus()
+        End If
+    End Sub
+    Private Sub change_F7(sender As Object, e As KeyEventArgs) Handles TextBox2.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.Handled = True
+            e.SuppressKeyPress = True
+            'MsgBox("a")
+            TextBox3.Focus()
+        End If
+    End Sub
+    Private Sub change_F8(sender As Object, e As KeyEventArgs) Handles TextBox3.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.Handled = True
+            e.SuppressKeyPress = True
+            'MsgBox("a")
+            TextBox4.Focus()
+        End If
+    End Sub
+    Private Sub change_F9(sender As Object, e As KeyEventArgs) Handles TextBox4.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.Handled = True
+            e.SuppressKeyPress = True
+            'MsgBox("a")
+            TextBox5.Focus()
+        End If
+    End Sub
+    Private Sub change_F10(sender As Object, e As KeyEventArgs) Handles TextBox5.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.Handled = True
+            e.SuppressKeyPress = True
+            'MsgBox("a")
+            val.Focus()
+        End If
+    End Sub
+    Private Sub change_F11(sender As Object, e As KeyEventArgs) Handles val.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.Handled = True
+            e.SuppressKeyPress = True
+            'MsgBox("a")
+            TextBox6.Focus()
+        End If
+    End Sub
+    Private Sub change_F12(sender As Object, e As KeyEventArgs) Handles TextBox6.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.Handled = True
+            e.SuppressKeyPress = True
+            'MsgBox("a")
+            TextBox8.Focus()
+        End If
+    End Sub
+    Private Sub change_F13(sender As Object, e As KeyEventArgs) Handles TextBox8.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.Handled = True
+            e.SuppressKeyPress = True
+            'MsgBox("a")
+            TextBox9.Focus()
+        End If
+    End Sub
+    Private Sub change_F14(sender As Object, e As KeyEventArgs) Handles TextBox9.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.Handled = True
+            e.SuppressKeyPress = True
+            'MsgBox("a")
+            TextBox11.Focus()
+        End If
+    End Sub
+    Private Sub change_F15(sender As Object, e As KeyEventArgs) Handles TextBox11.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.Handled = True
+            e.SuppressKeyPress = True
+            'MsgBox("a")
+            Comment.Focus()
+        End If
+    End Sub
+    Private Sub change_F16(sender As Object, e As KeyEventArgs) Handles Comment.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.Handled = True
+            e.SuppressKeyPress = True
+            'MsgBox("a")
+            confirm.Focus()
+        End If
+    End Sub
     Private Sub confirm_Click(sender As Object, e As EventArgs) Handles confirm.Click
+        Form2.Close()
         Dim id As String = taxId.Text
         If id = "" Then
-            MsgBox("发票号码为空白")
+            Form2.Show()
+            Form2.Label1.Text = "发票号码为空白"
+            Form2.Label1.Location = New Point(Int(Form2.Size.Width - Form2.Label1.Width) / 2, Form2.Label1.Location.Y)
+            Form2.Label1.Location = New Point(Int(Form2.Size.Width - Form2.Label1.Width) / 2, Form2.Label1.Location.Y)
+            Form2.Focus()
         ElseIf IsNumeric(id) = False Then
-            MsgBox("发票号码只能含有数字")
+            Form2.Show()
+            Form2.Label1.Text = "发票号码只能含有数字"
+            Form2.Label1.Location = New Point(Int(Form2.Size.Width - Form2.Label1.Width) / 2, Form2.Label1.Location.Y)
+            Form2.Focus()
         Else
             Dim temptaxNum As String = taxNum.Text
             If temptaxNum = "" Then
                 temptaxNum = "-1"
             ElseIf IsNumeric(temptaxNum) = False Then
-                MsgBox("发票代码只能含有数字")
+                Form2.Show()
+                Form2.Label1.Text = "发票代码只能含有数字"
+                Form2.Label1.Location = New Point(Int(Form2.Size.Width - Form2.Label1.Width) / 2, Form2.Label1.Location.Y)
+                Form2.Focus()
                 Return
             ElseIf CStr(CLng(temptaxNum)) <> temptaxNum Then
-                MsgBox("发票代码只能含有数字")
+                Form2.Show()
+                Form2.Label1.Text = "发票代码只能含有数字"
+                Form2.Label1.Location = New Point(Int(Form2.Size.Width - Form2.Label1.Width) / 2, Form2.Label1.Location.Y)
+                Form2.Focus()
                 Return
             End If
-
             Dim tempChecker As String = Checker.Text
             If tempChecker = "" Then
                 tempChecker = "-1"
@@ -54,7 +199,10 @@ Public Class s
             If tempttb4 = "" Then
                 tempttb4 = "-1"
             ElseIf IsNumeric(tempttb4) = False Then
-                MsgBox("数量只能含有数字")
+                Form2.Show()
+                Form2.Label1.Text = "数量只能含有数字"
+                Form2.Label1.Location = New Point(Int(Form2.Size.Width - Form2.Label1.Width) / 2, Form2.Label1.Location.Y)
+                Form2.Focus()
                 Return
             End If
 
@@ -62,7 +210,10 @@ Public Class s
             If tempttb5 = "" Then
                 tempttb5 = "-1"
             ElseIf IsNumeric(tempttb5) = False Then
-                MsgBox("单价只能含有数字")
+                Form2.Show()
+                Form2.Label1.Text = "单价只能含有数字"
+                Form2.Label1.Location = New Point(Int(Form2.Size.Width - Form2.Label1.Width) / 2, Form2.Label1.Location.Y)
+                Form2.Focus()
                 Return
             End If
 
@@ -70,7 +221,10 @@ Public Class s
             If tempval = "" Then
                 tempval = "-1"
             ElseIf IsNumeric(tempval) = False Then
-                MsgBox("金额只能含有数字")
+                Form2.Show()
+                Form2.Label1.Text = "金额只能含有数字"
+                Form2.Label1.Location = New Point(Int(Form2.Size.Width - Form2.Label1.Width) / 2, Form2.Label1.Location.Y)
+                Form2.Focus()
                 Return
             End If
 
@@ -78,7 +232,10 @@ Public Class s
             If tempttb6 = "" Then
                 tempttb6 = "-1"
             ElseIf IsNumeric(tempttb6) = False Then
-                MsgBox("税率只能含有数字")
+                Form2.Show()
+                Form2.Label1.Text = "税率只能含有数字"
+                Form2.Label1.Location = New Point(Int(Form2.Size.Width - Form2.Label1.Width) / 2, Form2.Label1.Location.Y)
+                Form2.Focus()
                 Return
             End If
 
@@ -86,7 +243,10 @@ Public Class s
             If tempttb8 = "" Then
                 tempttb8 = "-1"
             ElseIf IsNumeric(tempttb8) = False Then
-                MsgBox("税额只能含有数字")
+                Form2.Show()
+                Form2.Label1.Text = "税额只能含有数字"
+                Form2.Label1.Location = New Point(Int(Form2.Size.Width - Form2.Label1.Width) / 2, Form2.Label1.Location.Y)
+                Form2.Focus()
                 Return
             End If
 
@@ -94,7 +254,10 @@ Public Class s
             If tempttb9 = "" Then
                 tempttb9 = "-1"
             ElseIf IsNumeric(tempttb9) = False Then
-                MsgBox("加税合计只能含有数字")
+                Form2.Show()
+                Form2.Label1.Text = "加税合计只能含有数字"
+                Form2.Label1.Location = New Point(Int(Form2.Size.Width - Form2.Label1.Width) / 2, Form2.Label1.Location.Y)
+                Form2.Focus()
                 Return
             End If
 
@@ -111,14 +274,16 @@ Public Class s
 
 
             If dic.ContainsKey(taxId.Text) Then
-                MsgBox("重复了")
+                Form2.Show()
+                Form2.Label1.Text = "发票号码重复"
+                Form2.Label1.Location = New Point(Int(Form2.Size.Width - Form2.Label1.Width) / 2, Form2.Label1.Location.Y)
+                Form2.Focus()
             Else
-                MsgBox(tempcom.Contains(vbNewLine))
                 dic.Add(taxId.Text, New tax() With {
                .num = temptaxNum,
                .value = Convert.ToSingle(tempval),
                .datep = datep.Value,
-               .type = taxcb.SelectedItem,
+               .type = ct.Text + If(taxcb.SelectedItem, "增值税电子普通"),
                .com = tempcom,
                .checker = tempChecker,
                .buyer = tempttb10,
@@ -132,6 +297,12 @@ Public Class s
                .total = Convert.ToSingle(tempttb9),
                .seller = tempttb11
                })
+                If tempttb10 <> "-1" Then
+                    buyerAuto.Add(tempttb10)
+                End If
+                If tempttb11 <> "-1" Then
+                    sellerAuto.Add(tempttb11)
+                End If
                 taxNum.Text = ""
                 taxId.Text = ""
                 datep.Value = Date.Today
@@ -175,14 +346,24 @@ Public Class s
                 File.AppendAllText("temp", temp)
                 MsgBox("保存完成")
             End If
+            taxNum.Focus()
         End If
 
     End Sub
     Private Sub s_close(sender As Object, e As EventArgs) Handles MyBase.Closed
         Application.Exit()
     End Sub
-
     Private Sub s_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        TextBox10.AutoCompleteSource = AutoCompleteSource.CustomSource
+        TextBox10.AutoCompleteCustomSource = buyerAuto
+        TextBox10.AutoCompleteMode = AutoCompleteMode.Suggest
+        TextBox11.AutoCompleteSource = AutoCompleteSource.CustomSource
+        TextBox11.AutoCompleteCustomSource = sellerAuto
+        TextBox11.AutoCompleteMode = AutoCompleteMode.Suggest
+        ct.AutoCompleteSource = AutoCompleteSource.CustomSource
+        ct.AutoCompleteCustomSource = ctAuto
+        ct.AutoCompleteMode = AutoCompleteMode.Suggest
+
         taxcb.SelectedIndex = 0
         Dim temp As String = "UI"
         Dim TextLine As String
@@ -233,6 +414,12 @@ Public Class s
                     Continue Do
                 End If
                 Dim newstr As String() = Split(TextLine, ",,,,")
+                If newstr(7) <> "-1" Then
+                    buyerAuto.Add(newstr(7))
+                End If
+                If newstr(16) <> "-1" Then
+                    sellerAuto.Add(newstr(16))
+                End If
                 dic.Add(newstr(0), New tax() With {
            .num = newstr(1),
            .value = Convert.ToSingle(newstr(2)),
@@ -250,6 +437,9 @@ Public Class s
            .taxamount = Convert.ToSingle(newstr(14)),
            .total = Convert.ToSingle(newstr(15)),
            .seller = newstr(16)})
+                'MsgBox(newstr(4))
+                'MsgBox(newstr(4).IndexOf("增"))
+                ct.Text = newstr(4).Substring(0, newstr(4).IndexOf("增"))
             Loop
             objReader.Close()
         Else
@@ -259,6 +449,7 @@ Public Class s
             File.WriteAllLines("temp", {"9"})
             ComboBox1.SelectedItem = "9"
         End If
+        taxNum.Focus()
     End Sub
     Private Sub s_resize(sender As Object, e As EventArgs) Handles MyBase.ResizeEnd
         Funcresize()
@@ -296,12 +487,11 @@ Public Class s
         objWriter.Close()
         MsgBox("保存完成")
     End Sub
-
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
         Dim f As String = (ComboBox1.SelectedItem)
         Dim f1 As Single = Convert.ToSingle(f)
         For Each item In Me.Controls
-            If {"Label5", "Label7", "taxcb"}.Contains(item.Name) Then
+            If {"ct", "Label7", "taxcb"}.Contains(item.Name) Then
                 item.Font = New Font("SimSun", f1 * 2, FontStyle.Bold)
             ElseIf {"taxNum", "taxId", "datep", "Label1", "Label2", "Label3", "Checker", "Label9", "Label16", "ComboBox11"}.Contains(item.Name) Then
                 item.Font = New Font("SimSun", Convert.ToSingle(f1 * 1.5), FontStyle.Regular)
@@ -315,8 +505,6 @@ Public Class s
             File.WriteAllLines("temp", lines)
         End If
     End Sub
-
-
     Private Sub Exp_Click(sender As Object, e As EventArgs) Handles Exp.Click
         Dim excel_app As New excel.Application
         excel_app.Visible = True
@@ -366,8 +554,48 @@ Public Class s
             counter += 1
         Next
     End Sub
-End Class
+    Private Sub TextBox6_TextChanged(sender As Object, e As EventArgs) Handles TextBox6.TextChanged
+        If TextBox6.Text = "" Then
+            Return
+        End If
+        If IsNumeric(TextBox6.Text) = False Then
+            Form2.Show()
+            Form2.Label1.Text = "税率只能含有数字"
+            Form2.Label1.Location = New Point(Int(Form2.Size.Width - Form2.Label1.Width) / 2, Form2.Label1.Location.Y)
+            Form2.Focus()
+            Return
+        End If
+        TextBox6.Text = Math.Round(Convert.ToDouble(TextBox6.Text), 4).ToString()
+        'TextBox6.Text = TextBox6.Text.Replace("%", "") + "%"
+        If TextBox9.Text <> "" Then
+            calc()
+        End If
+    End Sub
 
+    Private Sub TextBox9_TextChanged(sender As Object, e As EventArgs) Handles TextBox9.TextChanged
+        If TextBox9.Text = "" Then
+            Return
+        End If
+        If IsNumeric(TextBox9.Text) = False Then
+            Form2.Show()
+            Form2.Label1.Text = "价税合计只能含有数字"
+            Form2.Label1.Location = New Point(Int(Form2.Size.Width - Form2.Label1.Width) / 2, Form2.Label1.Location.Y)
+            Form2.Focus()
+            Return
+        End If
+        TextBox9.Text = Math.Round(Convert.ToDouble(TextBox9.Text), 2).ToString()
+        If TextBox6.Text <> "" Then
+            calc()
+        End If
+    End Sub
+    Function calc()
+        Dim tot As Single = Convert.ToSingle(TextBox9.Text)
+        Dim taxper As Single = Convert.ToSingle(TextBox6.Text) / 100
+        Dim v As Single = Math.Round((tot / (1 + taxper)), 4)
+        val.Text = v.ToString()
+        TextBox8.Text = Math.Round((v * taxper), 4).ToString()
+    End Function
+End Class
 Public Class tax
     Public Property id As String
     Public Property num As String
