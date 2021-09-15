@@ -1,7 +1,7 @@
 ﻿'(add reference :microsoft excel)
 Imports System.IO
 Imports System.Text
-'Imports excel = Microsoft.Office.Interop.Excel
+Imports excel = Microsoft.Office.Interop.Excel
 Imports System.EventArgs
 Public Class s
     Private Property dic = New Dictionary(Of String, tax)
@@ -368,7 +368,6 @@ Public Class s
         Dim temp As String = "UI"
         Dim TextLine As String
         If File.Exists(temp) = True Then
-            'FileOpen(1, "UI",OpenMode.)
             Dim objReader As New StreamReader(temp)
             Dim x, y As Integer
             x = Me.Width
@@ -511,55 +510,55 @@ Public Class s
             File.WriteAllLines("temp", lines)
         End If
     End Sub
-    'Private Sub Exp_Click(sender As Object, e As EventArgs) Handles Exp.Click
-    '    Dim excel_app As New excel.Application
-    '    excel_app.Visible = True
-    '    Dim workbook As excel.Workbook = excel_app.Workbooks.Add(1)
-    '    Dim sheet As excel.Worksheet
-    '    Dim counter As Integer = 2
-    '    sheet = workbook.Worksheets("sheet1")
-    '    sheet.Cells(1, 1) = "发票号码"
-    '    sheet.Cells(1, 2) = "发票类型"
-    '    sheet.Cells(1, 3) = "发票代码"
-    '    sheet.Cells(1, 4) = "开票日期"
-    '    sheet.Cells(1, 5) = "校验码"
-    '    sheet.Cells(1, 6) = "购买方"
-    '    sheet.Cells(1, 7) = "货物或应税劳务、服务名称"
-    '    sheet.Cells(1, 8) = "规格型号"
-    '    sheet.Cells(1, 9) = "单位"
-    '    sheet.Cells(1, 10) = "数量"
-    '    sheet.Cells(1, 11) = "单价"
-    '    sheet.Cells(1, 12) = "金额"
-    '    sheet.Cells(1, 13) = "税率"
-    '    sheet.Cells(1, 14) = "税额"
-    '    sheet.Cells(1, 15) = "加税合计"
-    '    sheet.Cells(1, 16) = "销售方"
-    '    sheet.Cells(1, 17) = "备注"
+    Private Sub Exp_Click(sender As Object, e As EventArgs) Handles Exp.Click
+        Dim excel_app As New excel.Application
+        excel_app.Visible = True
+        Dim workbook As excel.Workbook = excel_app.Workbooks.Add(1)
+        Dim sheet As excel.Worksheet
+        Dim counter As Integer = 2
+        sheet = workbook.Worksheets("sheet1")
+        sheet.Cells(1, 1) = "发票号码"
+        sheet.Cells(1, 2) = "发票类型"
+        sheet.Cells(1, 3) = "发票代码"
+        sheet.Cells(1, 4) = "开票日期"
+        sheet.Cells(1, 5) = "校验码"
+        sheet.Cells(1, 6) = "购买方"
+        sheet.Cells(1, 7) = "货物或应税劳务、服务名称"
+        sheet.Cells(1, 8) = "规格型号"
+        sheet.Cells(1, 9) = "单位"
+        sheet.Cells(1, 10) = "数量"
+        sheet.Cells(1, 11) = "单价"
+        sheet.Cells(1, 12) = "金额"
+        sheet.Cells(1, 13) = "税率"
+        sheet.Cells(1, 14) = "税额"
+        sheet.Cells(1, 15) = "加税合计"
+        sheet.Cells(1, 16) = "销售方"
+        sheet.Cells(1, 17) = "备注"
 
-    '    For Each kvp As KeyValuePair(Of String, tax) In dic
-    '        Dim v1 As String = kvp.Key
-    '        Dim v2 As tax = kvp.Value
-    '        sheet.Cells(counter, 1) = v1
-    '        sheet.Cells(counter, 3) = If(v2.num.ToString() = "-1", "", v2.num.ToString())
-    '        sheet.Cells(counter, 2) = If(v2.type = "-1", "", v2.type)
-    '        sheet.Cells(counter, 4) = v2.datep.ToString("yyyy-MM-dd")
-    '        sheet.Cells(counter, 5) = If(v2.checker = "-1", "", v2.checker)
-    '        sheet.Cells(counter, 6) = If(v2.buyer = "-1", "", v2.buyer)
-    '        sheet.Cells(counter, 7) = If(v2.prod = "-1", "", v2.prod)
-    '        sheet.Cells(counter, 8) = If(v2.model = "-1", "", v2.model)
-    '        sheet.Cells(counter, 9) = If(v2.unit = "-1", "", v2.unit)
-    '        sheet.Cells(counter, 10) = If(v2.amount.ToString() = "-1", "", v2.amount.ToString())
-    '        sheet.Cells(counter, 11) = If(v2.price.ToString() = "-1", "", v2.price.ToString())
-    '        sheet.Cells(counter, 12) = If(v2.value.ToString() = "-1", "", v2.value.ToString())
-    '        sheet.Cells(counter, 13) = If(v2.taxper.ToString() = "-1", "", v2.taxper.ToString())
-    '        sheet.Cells(counter, 14) = If(v2.taxamount.ToString() = "-1", "", v2.taxamount.ToString())
-    '        sheet.Cells(counter, 15) = If(v2.total.ToString() = "-1", "", v2.total.ToString())
-    '        sheet.Cells(counter, 16) = If(v2.seller = "-1", "", v2.seller)
-    '        sheet.Cells(counter, 17) = If(v2.com = "-1", "", v2.com)
+        For Each kvp As KeyValuePair(Of String, tax) In dic
+            Dim v1 As String = kvp.Key
+            Dim v2 As tax = kvp.Value
+            sheet.Cells(counter, 1) = v1
+            sheet.Cells(counter, 3) = If(v2.num.ToString() = "-1", "", v2.num.ToString())
+            sheet.Cells(counter, 2) = If(v2.type = "-1", "", v2.type)
+            sheet.Cells(counter, 4) = v2.datep.ToString("yyyy-MM-dd")
+            sheet.Cells(counter, 5) = If(v2.checker = "-1", "", v2.checker)
+            sheet.Cells(counter, 6) = If(v2.buyer = "-1", "", v2.buyer)
+            sheet.Cells(counter, 7) = If(v2.prod = "-1", "", v2.prod)
+            sheet.Cells(counter, 8) = If(v2.model = "-1", "", v2.model)
+            sheet.Cells(counter, 9) = If(v2.unit = "-1", "", v2.unit)
+            sheet.Cells(counter, 10) = If(v2.amount.ToString() = "-1", "", v2.amount.ToString())
+            sheet.Cells(counter, 11) = If(v2.price.ToString() = "-1", "", v2.price.ToString())
+            sheet.Cells(counter, 12) = If(v2.value.ToString() = "-1", "", v2.value.ToString())
+            sheet.Cells(counter, 13) = If(v2.taxper.ToString() = "-1", "", v2.taxper.ToString())
+            sheet.Cells(counter, 14) = If(v2.taxamount.ToString() = "-1", "", v2.taxamount.ToString())
+            sheet.Cells(counter, 15) = If(v2.total.ToString() = "-1", "", v2.total.ToString())
+            sheet.Cells(counter, 16) = If(v2.seller = "-1", "", v2.seller)
+            sheet.Cells(counter, 17) = If(v2.com = "-1", "", v2.com)
 
-    '        counter += 1
-    '    Next
-    'End Sub
+            counter += 1
+        Next
+    End Sub
     Private Sub TextBox6_TextChanged(sender As Object, e As EventArgs) Handles TextBox6.LostFocus
         If TextBox6.Text = "" Then
             Return

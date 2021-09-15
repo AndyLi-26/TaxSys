@@ -85,7 +85,7 @@ Partial Class s
         Me.taxcb.Location = New System.Drawing.Point(753, 81)
         Me.taxcb.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.taxcb.Name = "taxcb"
-        Me.taxcb.Size = New System.Drawing.Size(274, 24)
+        Me.taxcb.Size = New System.Drawing.Size(274, 32)
         Me.taxcb.TabIndex = 1
         '
         'Label1
@@ -96,7 +96,7 @@ Partial Class s
         Me.Label1.ForeColor = System.Drawing.Color.Olive
         Me.Label1.Location = New System.Drawing.Point(1343, 60)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(89, 19)
+        Me.Label1.Size = New System.Drawing.Size(135, 30)
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "发票代码:"
         '
@@ -108,7 +108,7 @@ Partial Class s
         Me.Label2.ForeColor = System.Drawing.Color.Olive
         Me.Label2.Location = New System.Drawing.Point(1343, 105)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(89, 19)
+        Me.Label2.Size = New System.Drawing.Size(135, 30)
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "发票号码:"
         '
@@ -120,7 +120,7 @@ Partial Class s
         Me.Label3.ForeColor = System.Drawing.Color.Olive
         Me.Label3.Location = New System.Drawing.Point(1343, 147)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(89, 19)
+        Me.Label3.Size = New System.Drawing.Size(135, 30)
         Me.Label3.TabIndex = 4
         Me.Label3.Text = "开票日期:"
         '
@@ -132,7 +132,7 @@ Partial Class s
         Me.taxNum.Location = New System.Drawing.Point(1495, 50)
         Me.taxNum.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.taxNum.Name = "taxNum"
-        Me.taxNum.Size = New System.Drawing.Size(229, 26)
+        Me.taxNum.Size = New System.Drawing.Size(229, 35)
         Me.taxNum.TabIndex = 6
         '
         'taxId
@@ -143,7 +143,7 @@ Partial Class s
         Me.taxId.Location = New System.Drawing.Point(1495, 96)
         Me.taxId.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.taxId.Name = "taxId"
-        Me.taxId.Size = New System.Drawing.Size(229, 26)
+        Me.taxId.Size = New System.Drawing.Size(229, 35)
         Me.taxId.TabIndex = 7
         '
         'datep
@@ -153,7 +153,7 @@ Partial Class s
         Me.datep.Location = New System.Drawing.Point(1495, 137)
         Me.datep.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.datep.Name = "datep"
-        Me.datep.Size = New System.Drawing.Size(229, 26)
+        Me.datep.Size = New System.Drawing.Size(229, 35)
         Me.datep.TabIndex = 13
         '
         'confirm
@@ -188,7 +188,7 @@ Partial Class s
         Me.Label7.ForeColor = System.Drawing.Color.Olive
         Me.Label7.Location = New System.Drawing.Point(1029, 81)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(60, 25)
+        Me.Label7.Size = New System.Drawing.Size(89, 37)
         Me.Label7.TabIndex = 27
         Me.Label7.Text = "发票"
         '
@@ -213,7 +213,7 @@ Partial Class s
         Me.Label9.ForeColor = System.Drawing.Color.Olive
         Me.Label9.Location = New System.Drawing.Point(1343, 187)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(70, 19)
+        Me.Label9.Size = New System.Drawing.Size(106, 30)
         Me.Label9.TabIndex = 34
         Me.Label9.Text = "校验码:"
         '
@@ -225,7 +225,7 @@ Partial Class s
         Me.Checker.Location = New System.Drawing.Point(1495, 183)
         Me.Checker.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Checker.Name = "Checker"
-        Me.Checker.Size = New System.Drawing.Size(229, 26)
+        Me.Checker.Size = New System.Drawing.Size(229, 35)
         Me.Checker.TabIndex = 35
         '
         'Label4
@@ -237,7 +237,7 @@ Partial Class s
         Me.Label4.ForeColor = System.Drawing.Color.Olive
         Me.Label4.Location = New System.Drawing.Point(711, 307)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(29, 12)
+        Me.Label4.Size = New System.Drawing.Size(44, 18)
         Me.Label4.TabIndex = 23
         Me.Label4.Text = "数量"
         '
@@ -250,7 +250,7 @@ Partial Class s
         Me.Label12.ForeColor = System.Drawing.Color.Olive
         Me.Label12.Location = New System.Drawing.Point(377, 307)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(53, 12)
+        Me.Label12.Size = New System.Drawing.Size(80, 18)
         Me.Label12.TabIndex = 19
         Me.Label12.Text = "规格型号"
         '
@@ -263,7 +263,7 @@ Partial Class s
         Me.Label11.ForeColor = System.Drawing.Color.Olive
         Me.Label11.Location = New System.Drawing.Point(913, 307)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(29, 12)
+        Me.Label11.Size = New System.Drawing.Size(44, 18)
         Me.Label11.TabIndex = 18
         Me.Label11.Text = "单价"
         '
@@ -276,7 +276,7 @@ Partial Class s
         Me.Label15.ForeColor = System.Drawing.Color.Olive
         Me.Label15.Location = New System.Drawing.Point(561, 307)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(29, 12)
+        Me.Label15.Size = New System.Drawing.Size(44, 18)
         Me.Label15.TabIndex = 22
         Me.Label15.Text = "单位"
         '
@@ -289,7 +289,7 @@ Partial Class s
         Me.Label13.ForeColor = System.Drawing.Color.Olive
         Me.Label13.Location = New System.Drawing.Point(38, 307)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(149, 12)
+        Me.Label13.Size = New System.Drawing.Size(224, 18)
         Me.Label13.TabIndex = 20
         Me.Label13.Text = "货物或应税劳务、服务名称"
         '
@@ -301,7 +301,7 @@ Partial Class s
         Me.Label17.ForeColor = System.Drawing.Color.Olive
         Me.Label17.Location = New System.Drawing.Point(71, 282)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(65, 12)
+        Me.Label17.Size = New System.Drawing.Size(98, 18)
         Me.Label17.TabIndex = 38
         Me.Label17.Text = "购买方名称" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
@@ -384,7 +384,7 @@ Partial Class s
         Me.Label22.ForeColor = System.Drawing.Color.Olive
         Me.Label22.Location = New System.Drawing.Point(1603, 307)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(29, 12)
+        Me.Label22.Size = New System.Drawing.Size(44, 18)
         Me.Label22.TabIndex = 46
         Me.Label22.Text = "税额"
         '
@@ -397,7 +397,7 @@ Partial Class s
         Me.Label23.ForeColor = System.Drawing.Color.Olive
         Me.Label23.Location = New System.Drawing.Point(1206, 307)
         Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(29, 12)
+        Me.Label23.Size = New System.Drawing.Size(44, 18)
         Me.Label23.TabIndex = 47
         Me.Label23.Text = "金额"
         '
@@ -410,7 +410,7 @@ Partial Class s
         Me.Label24.ForeColor = System.Drawing.Color.Olive
         Me.Label24.Location = New System.Drawing.Point(1417, 307)
         Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(29, 12)
+        Me.Label24.Size = New System.Drawing.Size(44, 18)
         Me.Label24.TabIndex = 48
         Me.Label24.Text = "税率"
         '
@@ -457,7 +457,7 @@ Partial Class s
         Me.Label26.ForeColor = System.Drawing.Color.Olive
         Me.Label26.Location = New System.Drawing.Point(105, 361)
         Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(72, 16)
+        Me.Label26.Size = New System.Drawing.Size(106, 24)
         Me.Label26.TabIndex = 52
         Me.Label26.Text = "价税合计"
         '
@@ -470,7 +470,7 @@ Partial Class s
         Me.Label31.ForeColor = System.Drawing.Color.Olive
         Me.Label31.Location = New System.Drawing.Point(1130, 390)
         Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(29, 12)
+        Me.Label31.Size = New System.Drawing.Size(44, 18)
         Me.Label31.TabIndex = 57
         Me.Label31.Text = "备注"
         '
@@ -606,13 +606,14 @@ Partial Class s
         Me.Button1.TabIndex = 76
         Me.Button1.Text = "Button1"
         Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.Visible = False
         '
         'Label16
         '
         Me.Label16.AutoSize = True
         Me.Label16.Location = New System.Drawing.Point(36, 28)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(53, 12)
+        Me.Label16.Size = New System.Drawing.Size(80, 18)
         Me.Label16.TabIndex = 78
         Me.Label16.Text = "字体大小"
         '
@@ -622,7 +623,7 @@ Partial Class s
         Me.ComboBox1.Items.AddRange(New Object() {"4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"})
         Me.ComboBox1.Location = New System.Drawing.Point(24, 62)
         Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(121, 20)
+        Me.ComboBox1.Size = New System.Drawing.Size(121, 26)
         Me.ComboBox1.TabIndex = 79
         '
         'Label27
@@ -633,26 +634,28 @@ Partial Class s
         Me.Label27.ForeColor = System.Drawing.Color.Olive
         Me.Label27.Location = New System.Drawing.Point(92, 391)
         Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(65, 12)
+        Me.Label27.Size = New System.Drawing.Size(98, 18)
         Me.Label27.TabIndex = 80
         Me.Label27.Text = "销售方名称" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'Label28
         '
+        Me.Label28.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label28.AutoSize = True
         Me.Label28.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label28.Font = New System.Drawing.Font("SimSun", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label28.Location = New System.Drawing.Point(1483, 338)
+        Me.Label28.Location = New System.Drawing.Point(1474, 335)
         Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(16, 16)
+        Me.Label28.Size = New System.Drawing.Size(22, 24)
         Me.Label28.TabIndex = 82
         Me.Label28.Text = "%"
         '
         'ct
         '
-        Me.ct.Location = New System.Drawing.Point(672, 81)
+        Me.ct.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.ct.Location = New System.Drawing.Point(679, 81)
         Me.ct.Name = "ct"
-        Me.ct.Size = New System.Drawing.Size(68, 21)
+        Me.ct.Size = New System.Drawing.Size(68, 28)
         Me.ct.TabIndex = 83
         Me.ct.Text = "上海"
         '
