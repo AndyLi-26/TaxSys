@@ -26,3 +26,4 @@ D:\学习\project\TaxSys\TaxSys\obj\Debug\TaxSys.Form2.resources
 D:\学习\project\TaxSys\TaxSys\obj\Debug\TaxSys.Form3.resources
 C:\Users\TinaP\Desktop\TaxSys\TaxSys\obj\Debug\TaxSys.Form2.resources
 C:\Users\TinaP\Desktop\TaxSys\TaxSys\obj\Debug\TaxSys.Form3.resources
+C:\Users\TinaP\Desktop\TaxSys\TaxSys\obj\Debug\TaxSys.vbproj.AssemblyReference.cache

@@ -650,9 +650,9 @@ Partial Class s
         '
         'ct
         '
-        Me.ct.Location = New System.Drawing.Point(672, 85)
+        Me.ct.Location = New System.Drawing.Point(672, 81)
         Me.ct.Name = "ct"
-        Me.ct.Size = New System.Drawing.Size(75, 21)
+        Me.ct.Size = New System.Drawing.Size(68, 21)
         Me.ct.TabIndex = 83
         Me.ct.Text = "上海"
         '
