@@ -14,7 +14,6 @@ D:\学习\project\TaxSys\TaxSys\bin\Debug\TaxSys.exe
 D:\学习\project\TaxSys\TaxSys\bin\Debug\TaxSys.pdb
 D:\学习\project\TaxSys\TaxSys\bin\Debug\TaxSys.xml
 D:\学习\project\TaxSys\TaxSys\obj\Debug\TaxSys.vbproj.ResolveComReference.cache
-D:\学习\project\TaxSys\TaxSys\obj\Debug\TaxSys.s.resources
 D:\学习\project\TaxSys\TaxSys\obj\Debug\TaxSys.Resources.resources
 D:\学习\project\TaxSys\TaxSys\obj\Debug\TaxSys.vbproj.GenerateResource.cache
 D:\学习\project\TaxSys\TaxSys\obj\Debug\TaxSys.vbproj.CoreCompileInputs.cache
@@ -22,8 +21,8 @@ D:\学习\project\TaxSys\TaxSys\obj\Debug\TaxSys.exe
 D:\学习\project\TaxSys\TaxSys\obj\Debug\TaxSys.xml
 D:\学习\project\TaxSys\TaxSys\obj\Debug\TaxSys.pdb
 D:\学习\project\TaxSys\TaxSys\obj\Debug\TaxSys.vbprojAssemblyReference.cache
-D:\学习\project\TaxSys\TaxSys\obj\Debug\TaxSys.Form2.resources
-D:\学习\project\TaxSys\TaxSys\obj\Debug\TaxSys.Form3.resources
 C:\Users\TinaP\Desktop\TaxSys\TaxSys\obj\Debug\TaxSys.Form2.resources
 C:\Users\TinaP\Desktop\TaxSys\TaxSys\obj\Debug\TaxSys.Form3.resources
 C:\Users\TinaP\Desktop\TaxSys\TaxSys\obj\Debug\TaxSys.vbproj.AssemblyReference.cache
+D:\学习\project\TaxSys\TaxSys\obj\Debug\TaxSys.record.resources
+D:\学习\project\TaxSys\TaxSys\obj\Debug\TaxSys.Display.resources

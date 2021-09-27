@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class s
+Partial Class record
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -73,6 +73,8 @@ Partial Class s
         Me.Label27 = New System.Windows.Forms.Label()
         Me.Label28 = New System.Windows.Forms.Label()
         Me.ct = New System.Windows.Forms.TextBox()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.clear = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'taxcb
@@ -81,7 +83,7 @@ Partial Class s
         Me.taxcb.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.taxcb.Font = New System.Drawing.Font("SimSun", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.taxcb.FormattingEnabled = True
-        Me.taxcb.Items.AddRange(New Object() {"增值税电子普通", "增值税电子专用"})
+        Me.taxcb.Items.AddRange(New Object() {"增值税电子普通", "增值税电子专用", "其他类型"})
         Me.taxcb.Location = New System.Drawing.Point(753, 81)
         Me.taxcb.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.taxcb.Name = "taxcb"
@@ -160,7 +162,7 @@ Partial Class s
         '
         Me.confirm.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.confirm.Font = New System.Drawing.Font("SimSun", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.confirm.Location = New System.Drawing.Point(1385, 425)
+        Me.confirm.Location = New System.Drawing.Point(1441, 425)
         Me.confirm.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.confirm.Name = "confirm"
         Me.confirm.Size = New System.Drawing.Size(118, 56)
@@ -175,7 +177,7 @@ Partial Class s
         Me.Exp.Location = New System.Drawing.Point(1565, 425)
         Me.Exp.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Exp.Name = "Exp"
-        Me.Exp.Size = New System.Drawing.Size(118, 58)
+        Me.Exp.Size = New System.Drawing.Size(118, 56)
         Me.Exp.TabIndex = 25
         Me.Exp.Text = "导出"
         Me.Exp.UseVisualStyleBackColor = True
@@ -653,18 +655,38 @@ Partial Class s
         'ct
         '
         Me.ct.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.ct.Location = New System.Drawing.Point(679, 81)
+        Me.ct.Location = New System.Drawing.Point(645, 81)
         Me.ct.Name = "ct"
-        Me.ct.Size = New System.Drawing.Size(68, 28)
+        Me.ct.Size = New System.Drawing.Size(102, 28)
         Me.ct.TabIndex = 83
         Me.ct.Text = "上海"
         '
-        's
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(1317, 425)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(118, 56)
+        Me.Button2.TabIndex = 84
+        Me.Button2.Text = "查询"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'clear
+        '
+        Me.clear.Location = New System.Drawing.Point(1193, 425)
+        Me.clear.Name = "clear"
+        Me.clear.Size = New System.Drawing.Size(118, 56)
+        Me.clear.TabIndex = 85
+        Me.clear.Text = "清空"
+        Me.clear.UseVisualStyleBackColor = True
+        '
+        'record
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.ClientSize = New System.Drawing.Size(1766, 569)
+        Me.Controls.Add(Me.clear)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.ct)
         Me.Controls.Add(Me.Label28)
         Me.Controls.Add(Me.Label27)
@@ -716,7 +738,7 @@ Partial Class s
         Me.Controls.Add(Me.Label10)
         Me.Font = New System.Drawing.Font("SimSun", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.Name = "s"
+        Me.Name = "record"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "发票管理系统"
         Me.ResumeLayout(False)
@@ -774,4 +796,6 @@ Partial Class s
     Friend WithEvents Label27 As Label
     Friend WithEvents Label28 As Label
     Friend WithEvents ct As TextBox
+    Friend WithEvents Button2 As Button
+    Friend WithEvents clear As Button
 End Class
