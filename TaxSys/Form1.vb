@@ -14,142 +14,80 @@ Public Class record
     Private Property def As String = "上海"
     Private Property trig As Boolean
     Private Property font_s As Integer
-    Private Sub change_F1(sender As Object, e As KeyEventArgs) Handles taxId.KeyDown
+
+    'Changefocus can enter the next cell on press Enter
+    Private Sub Changefocus(e As KeyEventArgs, destination As Object)
         If e.KeyCode = Keys.Enter Then
             e.Handled = True
             e.SuppressKeyPress = True
             'MsgBox("a")
-            taxNum.Focus()
+            destination.Focus()
         End If
+    End Sub
+    Private Sub change_F1(sender As Object, e As KeyEventArgs) Handles taxId.KeyDown
+        Call Changefocus(e, taxNum)
     End Sub
     Private Sub change_F2(sender As Object, e As KeyEventArgs) Handles taxNum.KeyDown
-        If e.KeyCode = Keys.Enter Then
-            e.Handled = True
-            e.SuppressKeyPress = True
-            'MsgBox("a")
-            datep.Focus()
-        End If
+        Call Changefocus(e, datep)
     End Sub
     Private Sub change_F3(sender As Object, e As KeyEventArgs) Handles datep.KeyDown
-        If e.KeyCode = Keys.Enter Then
-            e.Handled = True
-            e.SuppressKeyPress = True
-            'MsgBox("a")
-            TextBox10.Focus()
-        End If
+        Call Changefocus(e, TextBox10)
     End Sub
     Private Sub change_F5(sender As Object, e As KeyEventArgs) Handles TextBox10.KeyDown
-        If e.KeyCode = Keys.Enter Then
-            e.Handled = True
-            e.SuppressKeyPress = True
-            'MsgBox("a")
-            TextBox1.Focus()
-        End If
+        Call Changefocus(e, TextBox1)
     End Sub
     Private Sub change_F6(sender As Object, e As KeyEventArgs) Handles TextBox1.KeyDown
-        If e.KeyCode = Keys.Enter Then
-            e.Handled = True
-            e.SuppressKeyPress = True
-            'MsgBox("a")
-            TextBox2.Focus()
-        End If
+        Call Changefocus(e, TextBox2)
     End Sub
     Private Sub change_F7(sender As Object, e As KeyEventArgs) Handles TextBox2.KeyDown
-        If e.KeyCode = Keys.Enter Then
-            e.Handled = True
-            e.SuppressKeyPress = True
-            'MsgBox("a")
-            TextBox3.Focus()
-        End If
+        Call Changefocus(e, TextBox3)
     End Sub
     Private Sub change_F8(sender As Object, e As KeyEventArgs) Handles TextBox3.KeyDown
-        If e.KeyCode = Keys.Enter Then
-            e.Handled = True
-            e.SuppressKeyPress = True
-            'MsgBox("a")
-            TextBox4.Focus()
-        End If
+        Call Changefocus(e, TextBox4)
     End Sub
     Private Sub change_F9(sender As Object, e As KeyEventArgs) Handles TextBox4.KeyDown
-        If e.KeyCode = Keys.Enter Then
-            e.Handled = True
-            e.SuppressKeyPress = True
-            'MsgBox("a")
-            TextBox5.Focus()
-        End If
+        Call Changefocus(e, TextBox5)
     End Sub
     Private Sub change_F10(sender As Object, e As KeyEventArgs) Handles TextBox5.KeyDown
-        If e.KeyCode = Keys.Enter Then
-            e.Handled = True
-            e.SuppressKeyPress = True
-            'MsgBox("a")
-            val.Focus()
-        End If
+        Call Changefocus(e, val)
     End Sub
     Private Sub change_F11(sender As Object, e As KeyEventArgs) Handles val.KeyDown
-        If e.KeyCode = Keys.Enter Then
-            e.Handled = True
-            e.SuppressKeyPress = True
-            'MsgBox("a")
-            TextBox6.Focus()
-        End If
+        Call Changefocus(e, TextBox6)
     End Sub
     Private Sub change_F12(sender As Object, e As KeyEventArgs) Handles TextBox6.KeyDown
-        If e.KeyCode = Keys.Enter Then
-            e.Handled = True
-            e.SuppressKeyPress = True
-            'MsgBox("a")
-            TextBox8.Focus()
-        End If
+        Call Changefocus(e, TextBox8)
     End Sub
     Private Sub change_F13(sender As Object, e As KeyEventArgs) Handles TextBox8.KeyDown
-        If e.KeyCode = Keys.Enter Then
-            e.Handled = True
-            e.SuppressKeyPress = True
-            'MsgBox("a")
-            TextBox9.Focus()
-        End If
+        Call Changefocus(e, TextBox9)
     End Sub
     Private Sub change_F14(sender As Object, e As KeyEventArgs) Handles TextBox9.KeyDown
-        If e.KeyCode = Keys.Enter Then
-            e.Handled = True
-            e.SuppressKeyPress = True
-            'MsgBox("a")
-            TextBox11.Focus()
-        End If
+        Call Changefocus(e, TextBox11)
     End Sub
     Private Sub change_F15(sender As Object, e As KeyEventArgs) Handles TextBox11.KeyDown
-        If e.KeyCode = Keys.Enter Then
-            e.Handled = True
-            e.SuppressKeyPress = True
-            'MsgBox("a")
-            Comment.Focus()
-        End If
+        Call Changefocus(e, Comment)
     End Sub
     Private Sub change_F16(sender As Object, e As KeyEventArgs) Handles Comment.KeyDown
-        If e.KeyCode = Keys.Enter Then
-            e.Handled = True
-            e.SuppressKeyPress = True
-            'MsgBox("a")
-            confirm.Focus()
-        End If
+        Call Changefocus(e, confirm)
     End Sub
+
+    'showErr shows different error messages
+    Private Sub showErr(errMsg As String)
+        Display.Show()
+        Display.Label1.Text = errMsg
+        Display.Label1.Location = New Point(Int(Display.Size.Width - Display.Label1.Width) / 2, Display.Label1.Location.Y)
+        Display.Focus()
+    End Sub
+
     Private Sub confirm_Click(sender As Object, e As EventArgs) Handles confirm.Click
         Display.Close()
         Dim id As String = taxId.Text
         If id = "" Then
-            Display.Show()
-            Display.Label1.Text = "发票代码为空白"
-            Display.Label1.Location = New Point(Int(Display.Size.Width - Display.Label1.Width) / 2, Display.Label1.Location.Y)
-            Display.Focus()
+            Call showErr("发票代码为空白")
             Return
         Else
             Dim temptaxNum As String = taxNum.Text
             If temptaxNum = "" Then
-                Display.Show()
-                Display.Label1.Text = "发票号码为空白"
-                Display.Label1.Location = New Point(Int(Display.Size.Width - Display.Label1.Width) / 2, Display.Label1.Location.Y)
-                Display.Focus()
+                Call showErr("发票号码为空白")
                 Return
             End If
 
@@ -177,10 +115,7 @@ Public Class record
             If tempttb4 = "" Then
                 tempttb4 = "-1"
             ElseIf IsNumeric(tempttb4) = False Then
-                Display.Show()
-                Display.Label1.Text = "数量只能含有数字"
-                Display.Label1.Location = New Point(Int(Display.Size.Width - Display.Label1.Width) / 2, Display.Label1.Location.Y)
-                Display.Focus()
+                Call showErr("数量只能含有数字")
                 Return
             End If
 
@@ -188,10 +123,7 @@ Public Class record
             If tempttb5 = "" Then
                 tempttb5 = "-1"
             ElseIf IsNumeric(tempttb5) = False Then
-                Display.Show()
-                Display.Label1.Text = "单价只能含有数字"
-                Display.Label1.Location = New Point(Int(Display.Size.Width - Display.Label1.Width) / 2, Display.Label1.Location.Y)
-                Display.Focus()
+                Call showErr("单价只能含有数字")
                 Return
             End If
 
@@ -199,10 +131,7 @@ Public Class record
             If tempval = "" Then
                 tempval = "-1"
             ElseIf IsNumeric(tempval) = False Then
-                Display.Show()
-                Display.Label1.Text = "金额只能含有数字"
-                Display.Label1.Location = New Point(Int(Display.Size.Width - Display.Label1.Width) / 2, Display.Label1.Location.Y)
-                Display.Focus()
+                Call showErr("金额只能含有数字")
                 Return
             End If
 
@@ -210,10 +139,7 @@ Public Class record
             If tempttb6 = "" Then
                 tempttb6 = "-1"
             ElseIf IsNumeric(tempttb6) = False Then
-                Display.Show()
-                Display.Label1.Text = "税率只能含有数字"
-                Display.Label1.Location = New Point(Int(Display.Size.Width - Display.Label1.Width) / 2, Display.Label1.Location.Y)
-                Display.Focus()
+                Call showErr("税率只能含有数字")
                 Return
             End If
 
@@ -221,10 +147,7 @@ Public Class record
             If tempttb8 = "" Then
                 tempttb8 = "-1"
             ElseIf IsNumeric(tempttb8) = False Then
-                Display.Show()
-                Display.Label1.Text = "税额只能含有数字"
-                Display.Label1.Location = New Point(Int(Display.Size.Width - Display.Label1.Width) / 2, Display.Label1.Location.Y)
-                Display.Focus()
+                Call showErr("税额只能含有数字")
                 Return
             End If
 
@@ -232,10 +155,7 @@ Public Class record
             If tempttb9 = "" Then
                 tempttb9 = "-1"
             ElseIf IsNumeric(tempttb9) = False Then
-                Display.Show()
-                Display.Label1.Text = "加税合计只能含有数字"
-                Display.Label1.Location = New Point(Int(Display.Size.Width - Display.Label1.Width) / 2, Display.Label1.Location.Y)
-                Display.Focus()
+                Call showErr("加税合计只能含有数字")
                 Return
             End If
 
@@ -251,10 +171,7 @@ Public Class record
             End If
 
             If dic.ContainsKey(id) Then
-                Display.Show()
-                Display.Label1.Text = "发票代码重复"
-                Display.Label1.Location = New Point(Int(Display.Size.Width - Display.Label1.Width) / 2, Display.Label1.Location.Y)
-                Display.Focus()
+                Call showErr("发票代码重复")
             Else
                 dic.Add(id, New tax() With {
                .num = temptaxNum,
@@ -350,7 +267,7 @@ Public Class record
             UUID = oStreamReader.ReadLine().Substring(0, 36)
         End Using
         'MsgBox("BA0D3A0B-0683-11EA-80DB-F875A42F7850".Length)
-        If UUID <> "BA0D3A0B-0683-11EA-80DB-F875A42F7850" Then
+        If UUID <> "36323135-3966-6536-6130-336134343533" Then
             MsgBox("请购买正版，谢谢")
             Application.Exit()
         End If
@@ -768,6 +685,7 @@ Public Class record
     End Sub
 
 End Class
+
 Public Class tax
     Public Property id As String
     Public Property num As String
