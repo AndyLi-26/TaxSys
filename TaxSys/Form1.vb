@@ -14,15 +14,15 @@ Public Class record
     Private Property def As String = "上海"
     Private Property trig As Boolean
     Private Property font_s As Integer
-    Private Sub change_F1(sender As Object, e As KeyEventArgs) Handles taxNum.KeyDown
+    Private Sub change_F1(sender As Object, e As KeyEventArgs) Handles taxId.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.Handled = True
             e.SuppressKeyPress = True
             'MsgBox("a")
-            taxId.Focus()
+            taxNum.Focus()
         End If
     End Sub
-    Private Sub change_F2(sender As Object, e As KeyEventArgs) Handles taxId.KeyDown
+    Private Sub change_F2(sender As Object, e As KeyEventArgs) Handles taxNum.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.Handled = True
             e.SuppressKeyPress = True
@@ -31,14 +31,6 @@ Public Class record
         End If
     End Sub
     Private Sub change_F3(sender As Object, e As KeyEventArgs) Handles datep.KeyDown
-        If e.KeyCode = Keys.Enter Then
-            e.Handled = True
-            e.SuppressKeyPress = True
-            'MsgBox("a")
-            Checker.Focus()
-        End If
-    End Sub
-    Private Sub change_F4(sender As Object, e As KeyEventArgs) Handles Checker.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.Handled = True
             e.SuppressKeyPress = True
@@ -147,34 +139,18 @@ Public Class record
         Dim id As String = taxId.Text
         If id = "" Then
             Display.Show()
-            Display.Label1.Text = "发票号码为空白"
+            Display.Label1.Text = "发票代码为空白"
             Display.Label1.Location = New Point(Int(Display.Size.Width - Display.Label1.Width) / 2, Display.Label1.Location.Y)
             Display.Focus()
-        ElseIf IsNumeric(id) = False Then
-            Display.Show()
-            Display.Label1.Text = "发票号码只能含有数字"
-            Display.Label1.Location = New Point(Int(Display.Size.Width - Display.Label1.Width) / 2, Display.Label1.Location.Y)
-            Display.Focus()
+            Return
         Else
             Dim temptaxNum As String = taxNum.Text
             If temptaxNum = "" Then
-                temptaxNum = "-1"
-            ElseIf IsNumeric(temptaxNum) = False Then
                 Display.Show()
-                Display.Label1.Text = "发票代码只能含有数字"
+                Display.Label1.Text = "发票号码为空白"
                 Display.Label1.Location = New Point(Int(Display.Size.Width - Display.Label1.Width) / 2, Display.Label1.Location.Y)
                 Display.Focus()
                 Return
-            ElseIf CStr(CLng(temptaxNum)) <> temptaxNum Then
-                Display.Show()
-                Display.Label1.Text = "发票代码只能含有数字"
-                Display.Label1.Location = New Point(Int(Display.Size.Width - Display.Label1.Width) / 2, Display.Label1.Location.Y)
-                Display.Focus()
-                Return
-            End If
-            Dim tempChecker As String = Checker.Text
-            If tempChecker = "" Then
-                tempChecker = "-1"
             End If
 
             Dim tempttb10 = TextBox10.Text
@@ -274,20 +250,19 @@ Public Class record
                 tempcom = "-1"
             End If
 
-
-            If dic.ContainsKey(taxId.Text) Then
+            If dic.ContainsKey(id) Then
                 Display.Show()
-                Display.Label1.Text = "发票号码重复"
+                Display.Label1.Text = "发票代码重复"
                 Display.Label1.Location = New Point(Int(Display.Size.Width - Display.Label1.Width) / 2, Display.Label1.Location.Y)
                 Display.Focus()
             Else
-                dic.Add(taxId.Text, New tax() With {
+                dic.Add(id, New tax() With {
                .num = temptaxNum,
                .value = Convert.ToSingle(tempval),
                .datep = datep.Value,
                .type = ct.Text + If(taxcb.SelectedItem, "增值税电子普通"),
                .com = tempcom,
-               .checker = tempChecker,
+               .rec = RecordDate.Value,
                .buyer = tempttb10,
                .prod = tempttb1,
                .model = tempttb2,
@@ -305,13 +280,13 @@ Public Class record
                 If tempttb11 <> "-1" Then
                     sellerAuto.Add(tempttb11)
                 End If
-                taxNum.Text = ""
                 taxId.Text = ""
+                taxNum.Text = ""
                 datep.Value = Date.Today
                 val.Text = ""
                 taxcb.SelectedIndex = 0
                 Comment.Text = ""
-                Checker.Text = ""
+                RecordDate.Value = Date.Today
                 TextBox10.Text = ""
                 TextBox1.Text = ""
                 TextBox2.Text = ""
@@ -332,7 +307,7 @@ Public Class record
                 temp += v2.datep.ToString("yyyy-MM-dd") + ",,,,"
                 temp += v2.type + ",,,,"
                 temp += v2.com + ",,,,"
-                temp += v2.checker + ",,,,"
+                temp += v2.rec.ToString("yyyy-MM-dd") + ",,,,"
                 temp += v2.buyer + ",,,,"
                 temp += v2.prod + ",,,,"
                 temp += v2.model + ",,,,"
@@ -397,11 +372,11 @@ Public Class record
                     Continue Do
                 End If
                 Dim newstr As String() = Split(TextLine, ",,,,")
-                If newstr(7) <> "-1" Then
-                    buyerAuto.Add(newstr(7))
+                If newstr(6) <> "-1" Then
+                    buyerAuto.Add(newstr(6))
                 End If
-                If newstr(16) <> "-1" Then
-                    sellerAuto.Add(newstr(16))
+                If newstr(15) <> "-1" Then
+                    sellerAuto.Add(newstr(15))
                 End If
                 dic.Add(newstr(0), New tax() With {
            .num = newstr(1),
@@ -409,7 +384,7 @@ Public Class record
            .datep = Date.Parse(newstr(3)),
            .type = newstr(4),
            .com = newstr(5),
-           .checker = newstr(6),
+           .rec = Date.Parse(newstr(6)),
            .buyer = newstr(7),
            .prod = newstr(8),
            .model = newstr(9),
@@ -438,6 +413,7 @@ Public Class record
             ComboBox1.SelectedItem = "9"
         End If
     End Sub
+
     Public Sub s_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         TextBox10.AutoCompleteSource = AutoCompleteSource.CustomSource
         TextBox10.AutoCompleteCustomSource = buyerAuto
@@ -485,7 +461,7 @@ Public Class record
             MsgBox("UI文件丢失，界面可能出错")
         End If
         load_dic()
-        taxNum.Focus()
+        taxId.Focus()
         'MsgBox(dic.Count)
     End Sub
 
@@ -494,7 +470,7 @@ Public Class record
     End Sub
 
     Private Sub s_fouse(sender As Object, e As EventArgs) Handles MyBase.GotFocus
-        taxNum.Focus()
+        taxId.Focus()
     End Sub
 
     Private Sub Funcresize()
@@ -511,6 +487,7 @@ Public Class record
             item.Width = Int(relative_s(item.Name).w * x)
         Next
     End Sub
+
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim path As String = "UI"
         Dim fs As FileStream = File.Create(path)
@@ -530,6 +507,7 @@ Public Class record
         objWriter.Close()
         MsgBox("保存完成")
     End Sub
+
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
         Dim f As String = (ComboBox1.SelectedItem)
         Dim f1 As Single = Convert.ToSingle(f)
@@ -548,6 +526,7 @@ Public Class record
             File.WriteAllLines("temp", lines)
         End If
     End Sub
+
     Private Sub Exp_Click(sender As Object, e As EventArgs) Handles Exp.Click
         Dim excel_app As New excel.Application
         excel_app.Visible = True
@@ -555,11 +534,11 @@ Public Class record
         Dim sheet As excel.Worksheet
         Dim counter As Integer = 2
         sheet = workbook.Worksheets("sheet1")
-        sheet.Cells(1, 1) = "发票号码"
+        sheet.Cells(1, 1) = "发票代码"
         sheet.Cells(1, 2) = "发票类型"
-        sheet.Cells(1, 3) = "发票代码"
+        sheet.Cells(1, 3) = "发票号码"
         sheet.Cells(1, 4) = "开票日期"
-        sheet.Cells(1, 5) = "校验码"
+        sheet.Cells(1, 5) = "录入日期"
         sheet.Cells(1, 6) = "购买方"
         sheet.Cells(1, 7) = "货物或应税劳务、服务名称"
         sheet.Cells(1, 8) = "规格型号"
@@ -577,10 +556,10 @@ Public Class record
             Dim v1 As String = kvp.Key
             Dim v2 As tax = kvp.Value
             sheet.Cells(counter, 1) = v1
-            sheet.Cells(counter, 3) = If(v2.num.ToString() = "-1", "", v2.num.ToString())
+            sheet.Cells(counter, 3) = v2.num
             sheet.Cells(counter, 2) = If(v2.type = "-1", "", v2.type)
             sheet.Cells(counter, 4) = v2.datep.ToString("yyyy-MM-dd")
-            sheet.Cells(counter, 5) = If(v2.checker = "-1", "", v2.checker)
+            sheet.Cells(counter, 5) = v2.rec.ToString("yyyy-MM-dd")
             sheet.Cells(counter, 6) = If(v2.buyer = "-1", "", v2.buyer)
             sheet.Cells(counter, 7) = If(v2.prod = "-1", "", v2.prod)
             sheet.Cells(counter, 8) = If(v2.model = "-1", "", v2.model)
@@ -593,10 +572,10 @@ Public Class record
             sheet.Cells(counter, 15) = If(v2.total.ToString() = "-1", "", v2.total.ToString())
             sheet.Cells(counter, 16) = If(v2.seller = "-1", "", v2.seller)
             sheet.Cells(counter, 17) = If(v2.com = "-1", "", v2.com)
-
             counter += 1
         Next
     End Sub
+
     Private Sub TextBox6_TextChanged(sender As Object, e As EventArgs) Handles TextBox6.LostFocus
         If TextBox6.Text = "" Then
             Return
@@ -614,13 +593,24 @@ Public Class record
             calc()
         End If
     End Sub
-    Private Sub taxId_TextChanged(sender As Object, e As EventArgs) Handles taxId.LostFocus
-        If IsNumeric(taxId.Text) = False Then
+
+    Private Sub taxId_TextChanged(sender As Object, e As EventArgs) Handles taxNum.LostFocus
+        If taxNum.Text = "" Then
+            Return
+        End If
+        If IsNumeric(taxNum.Text) = False Then
             Display.Show()
             Display.Label1.Text = "发票号码只能含有数字"
             Display.Label1.Location = New Point(Int(Display.Size.Width - Display.Label1.Width) / 2, Display.Label1.Location.Y)
             Display.Focus()
-        ElseIf CStr(Math.Abs(CLng(taxId.Text))) <> taxId.Text Then
+        End If
+    End Sub
+
+    Private Sub taxNum_TextChanged(sender As Object, e As EventArgs) Handles taxId.LostFocus
+        If taxId.Text = "" Then
+            Return
+        End If
+        If IsNumeric(taxId.Text) = False Then
             Display.Show()
             Display.Label1.Text = "发票代码只能含有数字"
             Display.Label1.Location = New Point(Int(Display.Size.Width - Display.Label1.Width) / 2, Display.Label1.Location.Y)
@@ -656,14 +646,28 @@ Public Class record
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Dim temp_dic As New Dictionary(Of String, tax)
         If taxId.Text <> "" Then
-            If dic.ContainsKey(taxId.Text) = False Then
+            If dic.ContainsKey(taxId.Text) Then
+                If taxNum.Text <> "" AndAlso dic(taxId.Text).num <> taxNum.Text Then
+                    Display.Show()
+                    Display.Label1.Text = "根据发票号码" + vbNewLine + "记录中无此发票"
+                    Display.Label1.Location = New Point(Int(Display.Size.Width - Display.Label1.Width) / 2, Display.Label1.Location.Y)
+                    Display.Focus()
+                Else
+                    temp_dic.Add(taxId.Text, dic(taxId.Text))
+                End If
+            End If
+        ElseIf taxNum.Text <> "" Then
+            For Each kvp As KeyValuePair(Of String, tax) In dic
+                If kvp.Value.num = taxNum.Text Then
+                    temp_dic.Add(kvp.Key, kvp.Value)
+                End If
+            Next
+            If temp_dic.Count = 0 Then
                 Display.Show()
                 Display.Label1.Text = "根据发票代码" + vbNewLine + "记录中无此发票"
                 Display.Label1.Location = New Point(Int(Display.Size.Width - Display.Label1.Width) / 2, Display.Label1.Location.Y)
                 Display.Focus()
                 Return
-            Else
-                temp_dic.Add(taxId.Text, dic(taxId.Text))
             End If
         ElseIf TextBox11.Text <> "" Then
             For Each kvp As KeyValuePair(Of String, tax) In dic
@@ -703,7 +707,7 @@ Public Class record
         sheet.Cells(1, 2) = "发票类型"
         sheet.Cells(1, 3) = "发票代码"
         sheet.Cells(1, 4) = "开票日期"
-        sheet.Cells(1, 5) = "校验码"
+        sheet.Cells(1, 5) = "录入日期"
         sheet.Cells(1, 6) = "购买方"
         sheet.Cells(1, 7) = "货物或应税劳务、服务名称"
         sheet.Cells(1, 8) = "规格型号"
@@ -722,10 +726,10 @@ Public Class record
             Dim v1 As String = kvp.Key
             Dim v2 As tax = kvp.Value
             sheet.Cells(counter, 1) = v1
-            sheet.Cells(counter, 3) = If(v2.num.ToString() = "-1", "", v2.num.ToString())
+            sheet.Cells(counter, 3) = v2.num
             sheet.Cells(counter, 2) = If(v2.type = "-1", "", v2.type)
             sheet.Cells(counter, 4) = v2.datep.ToString("yyyy-MM-dd")
-            sheet.Cells(counter, 5) = If(v2.checker = "-1", "", v2.checker)
+            sheet.Cells(counter, 5) = v2.rec.ToString("yyyy-MM-dd")
             sheet.Cells(counter, 6) = If(v2.buyer = "-1", "", v2.buyer)
             sheet.Cells(counter, 7) = If(v2.prod = "-1", "", v2.prod)
             sheet.Cells(counter, 8) = If(v2.model = "-1", "", v2.model)
@@ -741,41 +745,16 @@ Public Class record
             counter += 1
         Next
         temp_dic = New Dictionary(Of String, tax)
-
-        'Dim info As tax = dic(taxId.Text)
-        'Dim temp As Integer
-        'If info.type.Contains("增值税") Then
-        '    temp = info.type.IndexOf("增")
-        'Else
-        '    temp = info.type.IndexOf("其他")
-        'End If
-        'ct.Text = info.type.Substring(0, temp)
-        'taxcb.SelectedItem = info.type
-        'val.Text = If(info.value = -1, "", info.value)
-        'taxNum.Text = If(info.num = -1, "", info.num)
-        'datep.Value = info.datep
-        'Comment.Text = If(info.com = "-1", "", info.com)
-        'Checker.Text = If(info.checker = "-1", "", info.checker)
-        'TextBox10.Text = If(info.buyer = "-1", "", info.buyer)
-        'TextBox1.Text = If(info.prod = "-1", "", info.prod)
-        'TextBox2.Text = If(info.model = "-1", "", info.model)
-        'TextBox3.Text = If(info.unit = "-1", "", info.unit)
-        'TextBox4.Text = If(info.amount = -1, "", info.amount)
-        'TextBox5.Text = If(info.price = -1, "", info.price)
-        'TextBox6.Text = If(info.taxper = -1, "", info.taxper)
-        'TextBox8.Text = If(info.taxamount = -1, "", info.taxamount)
-        'TextBox9.Text = If(info.total = -1, "", info.total)
-        'TextBox11.Text = If(info.seller = "-1", "", info.seller)
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles clear.Click
-        taxNum.Text = ""
         taxId.Text = ""
+        taxNum.Text = ""
         datep.Value = Date.Today
         val.Text = ""
         taxcb.SelectedIndex = 0
         Comment.Text = ""
-        Checker.Text = ""
+        RecordDate.Value = Date.Today
         TextBox10.Text = ""
         TextBox1.Text = ""
         TextBox2.Text = ""
@@ -787,6 +766,7 @@ Public Class record
         TextBox9.Text = ""
         TextBox11.Text = ""
     End Sub
+
 End Class
 Public Class tax
     Public Property id As String
@@ -795,7 +775,7 @@ Public Class tax
     Public Property datep As Date
     Public Property type As String
     Public Property com As String
-    Public Property checker As String
+    Public Property rec As Date
     Public Property buyer As String
     Public Property prod As String
     Public Property model As String

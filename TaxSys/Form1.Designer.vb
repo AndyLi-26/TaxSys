@@ -26,15 +26,14 @@ Partial Class record
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.taxNum = New System.Windows.Forms.TextBox()
         Me.taxId = New System.Windows.Forms.TextBox()
+        Me.taxNum = New System.Windows.Forms.TextBox()
         Me.datep = New System.Windows.Forms.DateTimePicker()
         Me.confirm = New System.Windows.Forms.Button()
         Me.Exp = New System.Windows.Forms.Button()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.Checker = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
@@ -75,6 +74,7 @@ Partial Class record
         Me.ct = New System.Windows.Forms.TextBox()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.clear = New System.Windows.Forms.Button()
+        Me.RecordDate = New System.Windows.Forms.DateTimePicker()
         Me.SuspendLayout()
         '
         'taxcb
@@ -126,27 +126,27 @@ Partial Class record
         Me.Label3.TabIndex = 4
         Me.Label3.Text = "开票日期:"
         '
-        'taxNum
-        '
-        Me.taxNum.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.taxNum.BackColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.taxNum.Font = New System.Drawing.Font("SimSun", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.taxNum.Location = New System.Drawing.Point(1495, 50)
-        Me.taxNum.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.taxNum.Name = "taxNum"
-        Me.taxNum.Size = New System.Drawing.Size(229, 35)
-        Me.taxNum.TabIndex = 6
-        '
         'taxId
         '
         Me.taxId.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.taxId.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.taxId.Font = New System.Drawing.Font("SimSun", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.taxId.Location = New System.Drawing.Point(1495, 96)
+        Me.taxId.Location = New System.Drawing.Point(1495, 50)
         Me.taxId.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.taxId.Name = "taxId"
         Me.taxId.Size = New System.Drawing.Size(229, 35)
-        Me.taxId.TabIndex = 7
+        Me.taxId.TabIndex = 6
+        '
+        'taxNum
+        '
+        Me.taxNum.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.taxNum.BackColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.taxNum.Font = New System.Drawing.Font("SimSun", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.taxNum.Location = New System.Drawing.Point(1495, 96)
+        Me.taxNum.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.taxNum.Name = "taxNum"
+        Me.taxNum.Size = New System.Drawing.Size(229, 35)
+        Me.taxNum.TabIndex = 7
         '
         'datep
         '
@@ -215,20 +215,9 @@ Partial Class record
         Me.Label9.ForeColor = System.Drawing.Color.Olive
         Me.Label9.Location = New System.Drawing.Point(1343, 187)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(106, 30)
+        Me.Label9.Size = New System.Drawing.Size(129, 30)
         Me.Label9.TabIndex = 34
-        Me.Label9.Text = "校验码:"
-        '
-        'Checker
-        '
-        Me.Checker.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.Checker.BackColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Checker.Font = New System.Drawing.Font("SimSun", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Checker.Location = New System.Drawing.Point(1495, 183)
-        Me.Checker.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.Checker.Name = "Checker"
-        Me.Checker.Size = New System.Drawing.Size(229, 35)
-        Me.Checker.TabIndex = 35
+        Me.Label9.Text = "录入日期"
         '
         'Label4
         '
@@ -679,12 +668,23 @@ Partial Class record
         Me.clear.Text = "清空"
         Me.clear.UseVisualStyleBackColor = True
         '
+        'RecordDate
+        '
+        Me.RecordDate.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.RecordDate.Font = New System.Drawing.Font("SimSun", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.RecordDate.Location = New System.Drawing.Point(1495, 187)
+        Me.RecordDate.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.RecordDate.Name = "RecordDate"
+        Me.RecordDate.Size = New System.Drawing.Size(229, 35)
+        Me.RecordDate.TabIndex = 86
+        '
         'record
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.ClientSize = New System.Drawing.Size(1766, 569)
+        Me.Controls.Add(Me.RecordDate)
         Me.Controls.Add(Me.clear)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.ct)
@@ -718,14 +718,13 @@ Partial Class record
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.Label17)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.Checker)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Exp)
         Me.Controls.Add(Me.confirm)
         Me.Controls.Add(Me.datep)
-        Me.Controls.Add(Me.taxId)
         Me.Controls.Add(Me.taxNum)
+        Me.Controls.Add(Me.taxId)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -749,15 +748,14 @@ Partial Class record
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents taxNum As TextBox
     Friend WithEvents taxId As TextBox
+    Friend WithEvents taxNum As TextBox
     Friend WithEvents datep As DateTimePicker
     Friend WithEvents confirm As Button
     Friend WithEvents Exp As Button
     Friend WithEvents Label7 As Label
     Friend WithEvents Label14 As Label
     Friend WithEvents Label9 As Label
-    Friend WithEvents Checker As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents Label12 As Label
     Friend WithEvents Label11 As Label
@@ -798,4 +796,5 @@ Partial Class record
     Friend WithEvents ct As TextBox
     Friend WithEvents Button2 As Button
     Friend WithEvents clear As Button
+    Friend WithEvents RecordDate As DateTimePicker
 End Class
