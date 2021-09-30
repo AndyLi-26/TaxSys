@@ -445,7 +445,7 @@ Public Class record
         End If
     End Sub
 
-    Private Sub Fuck(currentDic As Dictionary(Of String, tax))
+    Private Sub toExcel(currentDic As Dictionary(Of String, tax))
         Dim excel_app As New excel.Application
         excel_app.Visible = True
         Dim workbook As excel.Workbook = excel_app.Workbooks.Add(1)
@@ -495,7 +495,7 @@ Public Class record
     End Sub
 
     Private Sub Exp_Click(sender As Object, e As EventArgs) Handles Exp.Click
-        Call Fuck(dic)
+        Call toExcel(dic)
     End Sub
 
     Private Sub TextBox6_TextChanged(sender As Object, e As EventArgs) Handles TextBox6.LostFocus
@@ -556,12 +556,17 @@ Public Class record
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Dim temp_dic As New Dictionary(Of String, tax)
         If taxId.Text <> "" Then
+
             If dic.ContainsKey(taxId.Text) Then
                 If taxNum.Text <> "" AndAlso dic(taxId.Text).num <> taxNum.Text Then
                     Call showErr("根据发票号码" + vbNewLine + "记录中无此发票")
+                    Return
                 Else
                     temp_dic.Add(taxId.Text, dic(taxId.Text))
                 End If
+            Else
+                Call showErr("根据发票代码" + vbNewLine + "记录中无此发票")
+                Return
             End If
         ElseIf taxNum.Text <> "" Then
             For Each kvp As KeyValuePair(Of String, tax) In dic
@@ -570,7 +575,7 @@ Public Class record
                 End If
             Next
             If temp_dic.Count = 0 Then
-                Call showErr("根据发票代码" + vbNewLine + "记录中无此发票")
+                Call showErr("根据发票号码" + vbNewLine + "记录中无此发票")
                 Return
             End If
         ElseIf TextBox11.Text <> "" Then
@@ -595,7 +600,7 @@ Public Class record
             End If
         End If
 
-        Call Fuck(temp_dic)
+        Call toExcel(temp_dic)
 
         temp_dic = New Dictionary(Of String, tax)
     End Sub
