@@ -24,6 +24,27 @@ Public Class record
             destination.Focus()
         End If
     End Sub
+
+    Private Sub ClearBox()
+        taxId.Text = ""
+        taxNum.Text = ""
+        datep.Value = Date.Today
+        val.Text = ""
+        taxcb.SelectedIndex = 0
+        Comment.Text = ""
+        RecordDate.Value = Date.Today
+        TextBox10.Text = ""
+        TextBox1.Text = ""
+        TextBox2.Text = ""
+        TextBox3.Text = ""
+        TextBox4.Text = ""
+        TextBox5.Text = ""
+        TextBox6.Text = ""
+        TextBox8.Text = ""
+        TextBox9.Text = ""
+        TextBox11.Text = ""
+    End Sub
+
     Private Sub change_F1(sender As Object, e As KeyEventArgs) Handles taxId.KeyDown
         Call Changefocus(e, taxNum)
     End Sub
@@ -197,23 +218,9 @@ Public Class record
                 If tempttb11 <> "-1" Then
                     sellerAuto.Add(tempttb11)
                 End If
-                taxId.Text = ""
-                taxNum.Text = ""
-                datep.Value = Date.Today
-                val.Text = ""
-                taxcb.SelectedIndex = 0
-                Comment.Text = ""
-                RecordDate.Value = Date.Today
-                TextBox10.Text = ""
-                TextBox1.Text = ""
-                TextBox2.Text = ""
-                TextBox3.Text = ""
-                TextBox4.Text = ""
-                TextBox5.Text = ""
-                TextBox6.Text = ""
-                TextBox8.Text = ""
-                TextBox9.Text = ""
-                TextBox11.Text = ""
+
+                Call ClearBox()
+
                 'Dim objWriter As New StreamWriter("temp", True)
                 Dim v1 As String = id
                 Dim v2 As tax = dic(id)
@@ -606,23 +613,7 @@ Public Class record
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles clear.Click
-        taxId.Text = ""
-        taxNum.Text = ""
-        datep.Value = Date.Today
-        val.Text = ""
-        taxcb.SelectedIndex = 0
-        Comment.Text = ""
-        RecordDate.Value = Date.Today
-        TextBox10.Text = ""
-        TextBox1.Text = ""
-        TextBox2.Text = ""
-        TextBox3.Text = ""
-        TextBox4.Text = ""
-        TextBox5.Text = ""
-        TextBox6.Text = ""
-        TextBox8.Text = ""
-        TextBox9.Text = ""
-        TextBox11.Text = ""
+        Call ClearBox()
     End Sub
 
 End Class
