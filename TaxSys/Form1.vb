@@ -210,7 +210,8 @@ Public Class record
                .taxper = Convert.ToSingle(tempttb6),
                .taxamount = Convert.ToSingle(tempttb8),
                .total = Convert.ToSingle(tempttb9),
-               .seller = tempttb11
+               .seller = tempttb11,
+               .comp = company.Text
                })
                 If tempttb10 <> "-1" Then
                     buyerAuto.Add(tempttb10)
@@ -241,7 +242,8 @@ Public Class record
                 temp += v2.taxper.ToString + ",,,,"
                 temp += v2.taxamount.ToString + ",,,,"
                 temp += v2.total.ToString + ",,,,"
-                temp += v2.seller + vbNewLine
+                temp += v2.seller + ",,,,"
+                temp += v2.comp + vbNewLine
                 'objWriter.WriteLine(temp)
                 'objWriter.Close()
                 File.AppendAllText("temp", temp)
@@ -318,7 +320,8 @@ Public Class record
            .taxper = Convert.ToSingle(newstr(13)),
            .taxamount = Convert.ToSingle(newstr(14)),
            .total = Convert.ToSingle(newstr(15)),
-           .seller = newstr(16)})
+           .seller = newstr(16),
+           .comp = newstr(17)})
                 'MsgBox(newstr(4))
                 'MsgBox(newstr(4).IndexOf("增"))
                 If newstr(4).Contains("增值税") Then
@@ -619,6 +622,7 @@ Public Class record
 End Class
 
 Public Class tax
+    Public Property comp As String
     Public Property id As String
     Public Property num As String
     Public Property value As Single
