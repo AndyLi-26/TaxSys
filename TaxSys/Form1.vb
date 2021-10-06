@@ -262,25 +262,25 @@ Public Class record
         '    Console.WriteLine("UUID: {0}", queryObj("UUID"))
         'Next
         'Process.Start("cmd", "/c wmic csproduct get uuid")
-        Dim oProcess As New Process()
-        Dim oStartInfo As New ProcessStartInfo("cmd", "/c wmic csproduct get uuid")
-        oStartInfo.UseShellExecute = False
-        oStartInfo.RedirectStandardOutput = True
-        oProcess.StartInfo = oStartInfo
-        oProcess.Start()
+        'Dim oProcess As New Process()
+        'Dim oStartInfo As New ProcessStartInfo("cmd", "/c wmic csproduct get uuid")
+        'oStartInfo.UseShellExecute = False
+        'oStartInfo.RedirectStandardOutput = True
+        'oProcess.StartInfo = oStartInfo
+        'oProcess.Start()
 
-        Dim UUID As String
-        Using oStreamReader As StreamReader = oProcess.StandardOutput
-            oStreamReader.ReadLine()
-            oStreamReader.ReadLine()
-            UUID = oStreamReader.ReadLine().Substring(0, 36)
-        End Using
-        'MsgBox("BA0D3A0B-0683-11EA-80DB-F875A42F7850".Length)
-        Dim uuids() As String = {"BA0D3A0B-0683-11EA-80DB-F875A42F7850", "36323135-3966-6536-6130-336134343533"}
-        If Not uuids.Contains(UUID) Then
-            MsgBox("请购买正版，谢谢")
-            Application.Exit()
-        End If
+        'Dim UUID As String
+        'Using oStreamReader As StreamReader = oProcess.StandardOutput
+        '    oStreamReader.ReadLine()
+        '    oStreamReader.ReadLine()
+        '    UUID = oStreamReader.ReadLine().Substring(0, 36)
+        'End Using
+        ''MsgBox("BA0D3A0B-0683-11EA-80DB-F875A42F7850".Length)
+        'Dim uuids() As String = {"BA0D3A0B-0683-11EA-80DB-F875A42F7850", "36323135-3966-6536-6130-336134343533"}
+        'If Not uuids.Contains(UUID) Then
+        '    MsgBox("请购买正版，谢谢")
+        '    Application.Exit()
+        'End If
     End Sub
 
     Public Sub load_dic()
@@ -352,8 +352,8 @@ Public Class record
         ct.AutoCompleteSource = AutoCompleteSource.CustomSource
         ct.AutoCompleteCustomSource = ctAuto
         ct.AutoCompleteMode = AutoCompleteMode.Suggest
-
         taxcb.SelectedIndex = 0
+
         Dim temp As String = "UI"
         Dim TextLine As String
         If File.Exists(temp) = True Then
@@ -388,7 +388,7 @@ Public Class record
             Next
             MsgBox("UI文件丢失，界面可能出错")
         End If
-        load_dic()
+        'load_dic()
         taxId.Focus()
         'MsgBox(dic.Count)
     End Sub
@@ -484,6 +484,9 @@ Public Class record
         For Each kvp As KeyValuePair(Of String, tax) In currentDic
             Dim v1 As String = kvp.Key
             Dim v2 As tax = kvp.Value
+            If v2.comp <> company.Text Then
+                Continue For
+            End If
             sheet.Cells(counter, 1) = v1
             sheet.Cells(counter, 3) = v2.num
             sheet.Cells(counter, 2) = If(v2.type = "-1", "", v2.type)
@@ -569,11 +572,16 @@ Public Class record
         If taxId.Text <> "" Then
 
             If dic.ContainsKey(taxId.Text) Then
+
                 If taxNum.Text <> "" AndAlso dic(taxId.Text).num <> taxNum.Text Then
                     Call showErr("根据发票号码" + vbNewLine + "记录中无此发票")
                     Return
                 Else
                     temp_dic.Add(taxId.Text, dic(taxId.Text))
+                End If
+                If dic(taxId.Text).comp <> company.Text Then
+                    Call showErr("根据发票代码" + vbNewLine + "此公司记录中无此发票")
+                    Return
                 End If
             Else
                 Call showErr("根据发票代码" + vbNewLine + "记录中无此发票")
@@ -581,7 +589,7 @@ Public Class record
             End If
         ElseIf taxNum.Text <> "" Then
             For Each kvp As KeyValuePair(Of String, tax) In dic
-                If kvp.Value.num = taxNum.Text Then
+                If kvp.Value.num = taxNum.Text And kvp.Value.comp = company.Text Then
                     temp_dic.Add(kvp.Key, kvp.Value)
                 End If
             Next
@@ -591,7 +599,7 @@ Public Class record
             End If
         ElseIf TextBox11.Text <> "" Then
             For Each kvp As KeyValuePair(Of String, tax) In dic
-                If kvp.Value.seller.Contains(TextBox11.Text) Or TextBox11.Text.Contains(kvp.Value.seller) Then
+                If (kvp.Value.seller.Contains(TextBox11.Text) Or TextBox11.Text.Contains(kvp.Value.seller)) And kvp.Value.comp = company.Text Then
                     temp_dic.Add(kvp.Key, kvp.Value)
                 End If
             Next
@@ -601,7 +609,7 @@ Public Class record
             End If
         Else
             For Each kvp As KeyValuePair(Of String, tax) In dic
-                If kvp.Value.datep.ToString("yyyy-MM-dd") = datep.Value.ToString("yyyy-MM-dd") Then
+                If kvp.Value.datep.ToString("yyyy-MM-dd") = datep.Value.ToString("yyyy-MM-dd") And kvp.Value.comp = company.Text Then
                     temp_dic.Add(kvp.Key, kvp.Value)
                 End If
             Next

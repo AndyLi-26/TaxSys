@@ -67,7 +67,6 @@ Partial Class record
         Me.TextBox11 = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label16 = New System.Windows.Forms.Label()
-        Me.FontDialog1 = New System.Windows.Forms.FontDialog()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.Label27 = New System.Windows.Forms.Label()
         Me.Label28 = New System.Windows.Forms.Label()
@@ -811,7 +810,6 @@ Partial Class record
     Friend WithEvents TextBox11 As TextBox
     Friend WithEvents Button1 As Button
     Friend WithEvents Label16 As Label
-    Friend WithEvents FontDialog1 As FontDialog
     Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents Label27 As Label
     Friend WithEvents Label28 As Label
