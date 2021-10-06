@@ -76,6 +76,7 @@ Partial Class record
         Me.clear = New System.Windows.Forms.Button()
         Me.RecordDate = New System.Windows.Forms.DateTimePicker()
         Me.company = New System.Windows.Forms.Label()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'taxcb
@@ -603,7 +604,7 @@ Partial Class record
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(36, 28)
+        Me.Label16.Location = New System.Drawing.Point(27, 9)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(80, 18)
         Me.Label16.TabIndex = 78
@@ -613,7 +614,7 @@ Partial Class record
         '
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Items.AddRange(New Object() {"4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"})
-        Me.ComboBox1.Location = New System.Drawing.Point(24, 62)
+        Me.ComboBox1.Location = New System.Drawing.Point(15, 43)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(121, 26)
         Me.ComboBox1.TabIndex = 79
@@ -688,12 +689,22 @@ Partial Class record
         Me.company.TabIndex = 87
         Me.company.Text = "公司1"
         '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(1697, 519)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(57, 47)
+        Me.Button3.TabIndex = 88
+        Me.Button3.Text = "Button3"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
         'record
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.ClientSize = New System.Drawing.Size(1766, 569)
+        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.company)
         Me.Controls.Add(Me.RecordDate)
         Me.Controls.Add(Me.clear)
@@ -809,4 +820,5 @@ Partial Class record
     Friend WithEvents clear As Button
     Friend WithEvents RecordDate As DateTimePicker
     Friend WithEvents company As Label
+    Friend WithEvents Button3 As Button
 End Class

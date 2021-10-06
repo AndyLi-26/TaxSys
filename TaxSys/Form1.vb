@@ -276,7 +276,8 @@ Public Class record
             UUID = oStreamReader.ReadLine().Substring(0, 36)
         End Using
         'MsgBox("BA0D3A0B-0683-11EA-80DB-F875A42F7850".Length)
-        If UUID <> "36323135-3966-6536-6130-336134343533" Then
+        Dim uuids() As String = {"BA0D3A0B-0683-11EA-80DB-F875A42F7850", "36323135-3966-6536-6130-336134343533"}
+        If Not uuids.Contains(UUID) Then
             MsgBox("请购买正版，谢谢")
             Application.Exit()
         End If
@@ -619,6 +620,10 @@ Public Class record
         Call ClearBox()
     End Sub
 
+    Private Sub Button3_Click_1(sender As Object, e As EventArgs) Handles Button3.Click
+        main.Show()
+        Me.Hide()
+    End Sub
 End Class
 
 Public Class tax

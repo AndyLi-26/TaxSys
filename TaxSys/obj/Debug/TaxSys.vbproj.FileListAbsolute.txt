@@ -26,3 +26,4 @@ D:\学习\project\TaxSys\TaxSys\obj\Debug\TaxSys.Display.resources
 C:\Users\TinaP\Desktop\TaxSys\TaxSys\obj\Debug\TaxSys.vbproj.ResolveComReference.cache
 C:\Users\TinaP\Desktop\TaxSys\TaxSys\obj\Debug\TaxSys.record.resources
 C:\Users\TinaP\Desktop\TaxSys\TaxSys\obj\Debug\TaxSys.Display.resources
+D:\学习\project\TaxSys\TaxSys\obj\Debug\TaxSys.main.resources
