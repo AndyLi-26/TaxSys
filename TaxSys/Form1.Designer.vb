@@ -682,7 +682,7 @@ Partial Class record
         'company
         '
         Me.company.AutoSize = True
-        Me.company.Location = New System.Drawing.Point(654, 21)
+        Me.company.Location = New System.Drawing.Point(844, 9)
         Me.company.Name = "company"
         Me.company.Size = New System.Drawing.Size(53, 18)
         Me.company.TabIndex = 87
@@ -690,11 +690,12 @@ Partial Class record
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(1697, 519)
+        Me.Button3.BackgroundImage = Global.TaxSys.My.Resources.Resources.download
+        Me.Button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Button3.Location = New System.Drawing.Point(1694, 513)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(57, 47)
+        Me.Button3.Size = New System.Drawing.Size(43, 44)
         Me.Button3.TabIndex = 88
-        Me.Button3.Text = "Button3"
         Me.Button3.UseVisualStyleBackColor = True
         '
         'record

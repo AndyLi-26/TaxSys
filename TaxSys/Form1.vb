@@ -441,7 +441,9 @@ Public Class record
         Dim f As String = (ComboBox1.SelectedItem)
         Dim f1 As Single = Convert.ToSingle(f)
         For Each item In Me.Controls
-            If {"ct", "Label7", "taxcb"}.Contains(item.Name) Then
+            If item.Name = "company" Then
+                item.Font = New Font("SimSun", f1 * 3, FontStyle.Bold)
+            ElseIf {"ct", "Label7", "taxcb"}.Contains(item.Name) Then
                 item.Font = New Font("SimSun", f1 * 2, FontStyle.Bold)
             ElseIf {"taxNum", "taxId", "datep", "Label1", "Label2", "Label3", "Checker", "Label9", "Label16", "ComboBox11"}.Contains(item.Name) Then
                 item.Font = New Font("SimSun", Convert.ToSingle(f1 * 1.5), FontStyle.Regular)
