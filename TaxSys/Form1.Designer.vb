@@ -22,6 +22,7 @@ Partial Class record
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(record))
         Me.taxcb = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -592,6 +593,7 @@ Partial Class record
         '
         'Button1
         '
+        Me.Button1.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Button1.Location = New System.Drawing.Point(274, 128)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(134, 62)
@@ -602,6 +604,7 @@ Partial Class record
         '
         'Label16
         '
+        Me.Label16.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label16.AutoSize = True
         Me.Label16.Location = New System.Drawing.Point(27, 9)
         Me.Label16.Name = "Label16"
@@ -611,6 +614,7 @@ Partial Class record
         '
         'ComboBox1
         '
+        Me.ComboBox1.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Items.AddRange(New Object() {"4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"})
         Me.ComboBox1.Location = New System.Drawing.Point(15, 43)
@@ -653,6 +657,7 @@ Partial Class record
         '
         'Button2
         '
+        Me.Button2.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Button2.Location = New System.Drawing.Point(1317, 425)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(118, 56)
@@ -662,6 +667,7 @@ Partial Class record
         '
         'clear
         '
+        Me.clear.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.clear.Location = New System.Drawing.Point(1193, 425)
         Me.clear.Name = "clear"
         Me.clear.Size = New System.Drawing.Size(118, 56)
@@ -673,7 +679,7 @@ Partial Class record
         '
         Me.RecordDate.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.RecordDate.Font = New System.Drawing.Font("SimSun", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.RecordDate.Location = New System.Drawing.Point(1495, 187)
+        Me.RecordDate.Location = New System.Drawing.Point(1495, 182)
         Me.RecordDate.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.RecordDate.Name = "RecordDate"
         Me.RecordDate.Size = New System.Drawing.Size(229, 35)
@@ -681,6 +687,7 @@ Partial Class record
         '
         'company
         '
+        Me.company.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.company.AutoSize = True
         Me.company.Location = New System.Drawing.Point(844, 9)
         Me.company.Name = "company"
@@ -690,17 +697,19 @@ Partial Class record
         '
         'Button3
         '
+        Me.Button3.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Button3.BackgroundImage = Global.TaxSys.My.Resources.Resources.download
         Me.Button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.Button3.Location = New System.Drawing.Point(1694, 513)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(43, 44)
+        Me.Button3.Size = New System.Drawing.Size(43, 37)
         Me.Button3.TabIndex = 88
         Me.Button3.UseVisualStyleBackColor = True
         '
         'record
         '
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(144.0!, 144.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.ClientSize = New System.Drawing.Size(1766, 569)
@@ -758,6 +767,7 @@ Partial Class record
         Me.Controls.Add(Me.Label18)
         Me.Controls.Add(Me.Label10)
         Me.Font = New System.Drawing.Font("SimSun", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "record"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual

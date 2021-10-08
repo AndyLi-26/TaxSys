@@ -445,7 +445,7 @@ Public Class record
                 item.Font = New Font("SimSun", f1 * 3, FontStyle.Bold)
             ElseIf {"ct", "Label7", "taxcb"}.Contains(item.Name) Then
                 item.Font = New Font("SimSun", f1 * 2, FontStyle.Bold)
-            ElseIf {"taxNum", "taxId", "datep", "Label1", "Label2", "Label3", "Checker", "Label9", "Label16", "ComboBox11"}.Contains(item.Name) Then
+            ElseIf {"taxNum", "taxId", "datep", "Label1", "Label2", "Label3", "Checker", "Label9", "Label16", "ComboBox11", "RecordDate"}.Contains(item.Name) Then
                 item.Font = New Font("SimSun", Convert.ToSingle(f1 * 1.5), FontStyle.Regular)
             Else
                 item.Font = New Font("SimSun", f1, FontStyle.Regular)
