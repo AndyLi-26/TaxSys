@@ -252,33 +252,35 @@ Public Class record
 
     End Sub
 
-    Private Sub Check_valid(sender As Object, e As EventArgs) Handles MyBase.HandleCreated
-        'Dim searcher As New ManagementObjectSearcher(
-        '        "root\CIMV2",
-        '        "SELECT * FROM Win32_ComputerSystemProduct")
-        'For Each queryObj As ManagementObject In searcher.Get()
-        '    Console.WriteLine("UUID: {0}", queryObj("UUID"))
-        'Next
-        'Process.Start("cmd", "/c wmic csproduct get uuid")
-        Dim oProcess As New Process()
-        Dim oStartInfo As New ProcessStartInfo("cmd", "/c wmic csproduct get uuid")
-        oStartInfo.UseShellExecute = False
-        oStartInfo.RedirectStandardOutput = True
-        oProcess.StartInfo = oStartInfo
-        oProcess.Start()
+    'Private Sub Check_valid(sender As Object, e As EventArgs) Handles MyBase.HandleCreated
+    '    'Dim searcher As New ManagementObjectSearcher(
+    '    '        "root\CIMV2",
+    '    '        "SELECT * FROM Win32_ComputerSystemProduct")
+    '    'For Each queryObj As ManagementObject In searcher.Get()
+    '    '    Console.WriteLine("UUID: {0}", queryObj("UUID"))
+    '    'Next
+    '    'Process.Start("cmd", "/c wmic csproduct get uuid")
+    '    Dim oProcess As New Process()
+    '    Dim oStartInfo As New ProcessStartInfo("cmd", "/c wmic csproduct get uuid")
+    '    oStartInfo.UseShellExecute = False
+    '    oStartInfo.RedirectStandardOutput = True
+    '    oProcess.StartInfo = oStartInfo
+    '    oProcess.Start()
 
-        Dim UUID As String
-        Using oStreamReader As StreamReader = oProcess.StandardOutput
-            oStreamReader.ReadLine()
-            oStreamReader.ReadLine()
-            UUID = oStreamReader.ReadLine().Substring(0, 36)
-        End Using
-        'MsgBox("BA0D3A0B-0683-11EA-80DB-F875A42F7850".Length)
-        If UUID <> "36323135-3966-6536-6130-336134343533" Then
-            MsgBox("请购买正版，谢谢")
-            Application.Exit()
-        End If
-    End Sub
+    '    Dim UUID As String
+    '    Using oStreamReader As StreamReader = oProcess.StandardOutput
+    '        oStreamReader.ReadLine()
+    '        oStreamReader.ReadLine()
+    '        UUID = oStreamReader.ReadLine().Substring(0, 36)
+    '    End Using
+    '    'MsgBox("BA0D3A0B-0683-11EA-80DB-F875A42F7850".Length)
+    '    'If UUID <> "36323135-3966-6536-6130-336134343533" Then
+    '    Dim uuids As String() = {"BA0D3A0B-0683-11EA-80DB-F875A42F7850", "36323135-3966-6536-6130-336134343533"}
+    '    'If Not uuids.Contains(UUID) Then
+    '    '    MsgBox("请购买正版，谢谢")
+    '    '    Application.Exit()
+    '    'End If
+    'End Sub
 
     Public Sub load_dic()
         Dim temp As String = "temp"
@@ -352,9 +354,9 @@ Public Class record
         taxcb.SelectedIndex = 0
         Dim temp As String = "UI"
         Dim TextLine As String
+        Dim x, y As Integer
         If File.Exists(temp) = True Then
             Dim objReader As New StreamReader(temp)
-            Dim x, y As Integer
             x = Me.Width
             y = Me.Height
             Do While objReader.Peek() <> -1
@@ -371,7 +373,6 @@ Public Class record
             objReader.Close()
             Funcresize()
         Else
-            Dim x, y As Integer
             x = Me.Width
             y = Me.Height
             For Each item In Me.Controls
@@ -386,6 +387,7 @@ Public Class record
         End If
         load_dic()
         taxId.Focus()
+        Funcresize()
         'MsgBox(dic.Count)
     End Sub
 
@@ -439,7 +441,7 @@ Public Class record
         For Each item In Me.Controls
             If {"ct", "Label7", "taxcb"}.Contains(item.Name) Then
                 item.Font = New Font("SimSun", f1 * 2, FontStyle.Bold)
-            ElseIf {"taxNum", "taxId", "datep", "Label1", "Label2", "Label3", "Checker", "Label9", "Label16", "ComboBox11"}.Contains(item.Name) Then
+            ElseIf {"taxNum", "taxId", "datep", "Label1", "Label2", "Label3", "Checker", "Label9", "Label16", "ComboBox11", "RecordDate"}.Contains(item.Name) Then
                 item.Font = New Font("SimSun", Convert.ToSingle(f1 * 1.5), FontStyle.Regular)
             Else
                 item.Font = New Font("SimSun", f1, FontStyle.Regular)
